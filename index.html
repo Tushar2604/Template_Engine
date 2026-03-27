@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Template Engine — Gallery &amp; Bulk Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: #0b1220; color: #e2e8f0; min-height: 100vh; }
+    .top { padding: 24px 28px 0; border-bottom: 1px solid rgba(148,163,184,.15); }
+    .top h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; }
+    .top p { font-size: .875rem; color: #94a3b8; max-width: 800px; line-height: 1.55; margin-bottom: 16px; }
+    .stats { display: flex; gap: 16px; font-size: .8rem; color: #94a3b8; margin-bottom: 14px; }
+    .stat { display: flex; align-items: center; gap: 6px; }
+    .stat .num { font-weight: 700; color: #6366f1; font-size: 1.1rem; }
+    nav { display: flex; gap: 8px; padding-bottom: 16px; flex-wrap: wrap; }
+    nav button {
+      font-size: .8rem; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid #334155;
+      background: #1e293b; color: #e2e8f0; cursor: pointer; font-family: inherit;
+    }
+    nav button.on { background: #6366f1; border-color: #6366f1; color: #fff; }
+    nav button:hover:not(.on) { background: #334155; }
+    .panel { display: none; padding: 20px 28px 48px; }
+    .panel.active { display: block; }
+
+    /* Filter bar */
+    .filter-bar { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+    .filter-btn {
+      font-size: .72rem; font-weight: 600; padding: 6px 12px; border-radius: 6px; border: 1px solid #334155;
+      background: #1e293b; color: #94a3b8; cursor: pointer; font-family: inherit; text-transform: capitalize;
+    }
+    .filter-btn.active { background: #6366f1; border-color: #6366f1; color: #fff; }
+    .filter-btn:hover:not(.active) { background: #334155; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+    .card {
+      background: #151d2e; border-radius: 12px; border: 1px solid rgba(148,163,184,.12);
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .card.hidden { display: none; }
+    .card h2 { font-size: .82rem; font-weight: 600; padding: 14px 16px 8px; color: #f1f5f9; line-height: 1.35; }
+    .card .meta { font-size: .72rem; color: #64748b; padding: 0 16px 6px; }
+    .card .cat-badge { display: inline-block; font-size: .62rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #6366f1; color: #fff; margin-left: 8px; text-transform: uppercase; letter-spacing: .06em; }
+    .swatches { display: flex; gap: 6px; padding: 0 16px 12px; flex-wrap: wrap; }
+    .swatches span { width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(255,255,255,.12); }
+    .frame { background: #1e293b; height: 400px; position: relative; }
+    .frame iframe { width: 200%; height: 800px; border: 0; transform: scale(0.5); transform-origin: 0 0; pointer-events: none; }
+    .actions { padding: 12px 16px 16px; display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+    .actions a {
+      font-size: .75rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; text-decoration: none;
+      background: #6366f1; color: #fff;
+    }
+    .actions a.secondary { background: transparent; border: 1px solid #475569; color: #cbd5e1; }
+
+    .bulk-box { max-width: 760px; background: #151d2e; border: 1px solid rgba(148,163,184,.15); border-radius: 12px; padding: 24px 28px; }
+    .bulk-box h2 { font-size: 1rem; margin-bottom: 10px; }
+    .bulk-box p { font-size: .875rem; color: #94a3b8; line-height: 1.55; margin-bottom: 16px; }
+    .bulk-box ul { font-size: .8rem; color: #94a3b8; margin-left: 1.2rem; line-height: 1.6; margin-bottom: 18px; }
+    .bulk-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+    .bulk-option { display: flex; align-items: center; gap: 10px; }
+    .bulk-option label { font-size: .82rem; color: #e2e8f0; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+    .bulk-option input[type=checkbox] { width: 18px; height: 18px; accent-color: #6366f1; cursor: pointer; }
+    .bulk-option .desc { font-size: .72rem; color: #64748b; margin-left: 28px; }
+    .bulk-count { font-size: 1.2rem; font-weight: 700; color: #6366f1; margin-bottom: 16px; }
+    .bulk-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .bulk-actions button.primary {
+      font-size: .875rem; font-weight: 600; padding: 12px 22px; border-radius: 10px; border: none;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; cursor: pointer; font-family: inherit;
+    }
+    .bulk-actions button.primary:disabled { opacity: .55; cursor: not-allowed; }
+    .progress-wrap { margin-top: 8px; display: none; }
+    .progress-wrap.visible { display: block; }
+    .progress-bar { height: 8px; background: #334155; border-radius: 99px; overflow: hidden; margin-bottom: 8px; }
+    .progress-bar i { display: block; height: 100%; width: 0%; background: #6366f1; border-radius: 99px; transition: width .12s ease; }
+    .log { font-size: .72rem; color: #64748b; font-family: ui-monospace, monospace; max-height: 120px; overflow: auto; }
+    code { background: #334155; padding: 2px 6px; border-radius: 4px; font-size: .85em; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <h1>CV &amp; Portfolio Template Engine</h1>
+    <p>
+      Live previews bind to <code>data/sample-resume.json</code>.
+      The bulk generator builds up to <strong>300+</strong> HTML templates (20 layouts × 15 themes) with optional font and spacing variations.
+      Run <code>npm run dev</code> and open this page from the server.
+    </p>
+    <div class="stats">
+      <div class="stat"><span class="num" id="stat-layouts">22</span> Layouts</div>
+      <div class="stat"><span class="num">15</span> Themes</div>
+      <div class="stat"><span class="num">5</span> Fonts</div>
+      <div class="stat"><span class="num">3</span> Spacing</div>
+    </div>
+    <nav>
+      <button type="button" class="on" data-panel="gallery">Template gallery</button>
+      <button type="button" data-panel="bulk">Bulk generator</button>
+    </nav>
+  </div>
+
+  <section class="panel active" id="panel-gallery">
+    <div class="filter-bar" id="filter-bar"></div>
+    <div class="grid" id="gallery"></div>
+  </section>
+
+  <section class="panel" id="panel-bulk">
+    <div class="bulk-box">
+      <h2>Bulk Template Generator</h2>
+      <p>Generate standalone HTML resume files. Each file embeds JSON data for offline use and references <code>engine/binder.js</code>.</p>
+      <ul>
+        <li><strong>20 Layouts:</strong> Original 10 + 10 new (Enhancv/Resume.io inspired)</li>
+        <li><strong>15 Themes:</strong> Horizon Blue, Clinical Azure, Deep Indigo, Rose, Amber, Emerald, Violet, Slate, Teal, Crimson, Ocean, Forest, Plum, Copper, Midnight</li>
+        <li><strong>5 Fonts (optional):</strong> Inter, Roboto, Poppins, Lato, Source Sans</li>
+        <li><strong>3 Spacing (optional):</strong> Compact, Normal, Spacious</li>
+      </ul>
+      <div class="bulk-options">
+        <div class="bulk-option">
+          <label><input type="checkbox" id="opt-fonts" /> Include font variations (×5)</label>
+        </div>
+        <div class="desc">Generates each layout+theme combo in 5 font families</div>
+        <div class="bulk-option">
+          <label><input type="checkbox" id="opt-spacing" /> Include spacing variations (×3)</label>
+        </div>
+        <div class="desc">Generates compact, normal, and spacious versions</div>
+      </div>
+      <div class="bulk-count">Total: <span id="bulk-total-display">300</span> templates</div>
+      <div class="bulk-actions">
+        <button type="button" class="primary" id="btn-bulk">Download ZIP</button>
+        <span id="bulk-status" style="font-size:.8rem;color:#94a3b8"></span>
+      </div>
+      <div class="progress-wrap" id="bulk-progress">
+        <div class="progress-bar"><i id="bulk-progress-fill"></i></div>
+        <div class="log" id="bulk-log"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="engine/registry.js"></script>
+  <script src="engine/bulk-engine.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    (function () {
+      /* ── Tab switching ──────────────────────────────────── */
+      var buttons = document.querySelectorAll('nav button');
+      var panels = document.querySelectorAll('.panel');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-panel');
+          buttons.forEach(function (b) { b.classList.toggle('on', b === btn); });
+          panels.forEach(function (p) { p.classList.toggle('active', p.id === 'panel-' + id); });
+        });
+      });
+
+      /* ── Filter bar ─────────────────────────────────────── */
+      var reg = window.CV_TEMPLATE_REGISTRY || [];
+      var cats = ['all'];
+      reg.forEach(function (t) {
+        if (t.category && cats.indexOf(t.category) === -1) cats.push(t.category);
+      });
+      var filterBar = document.getElementById('filter-bar');
+      cats.forEach(function (c) {
+        var b = document.createElement('button');
+        b.className = 'filter-btn' + (c === 'all' ? ' active' : '');
+        b.textContent = c;
+        b.setAttribute('data-cat', c);
+        b.addEventListener('click', function () {
+          document.querySelectorAll('.filter-btn').forEach(function (fb) {
+            fb.classList.toggle('active', fb === b);
+          });
+          document.querySelectorAll('#gallery .card').forEach(function (card) {
+            if (c === 'all') { card.classList.remove('hidden'); }
+            else { card.classList.toggle('hidden', card.getAttribute('data-cat') !== c); }
+          });
+        });
+        filterBar.appendChild(b);
+      });
+
+      /* ── Gallery ────────────────────────────────────────── */
+      var g = document.getElementById('gallery');
+      reg.forEach(function (t) {
+        var el = document.createElement('article');
+        el.className = 'card';
+        el.setAttribute('data-cat', t.category || 'other');
+        var sw = (t.palette || []).map(function (c) { return '<span style="background:' + c + '"></span>'; }).join('');
+        var catBadge = t.category ? '<span class="cat-badge">' + t.category + '</span>' : '';
+        el.innerHTML =
+          '<h2>' + t.name + catBadge + '</h2>' +
+          '<div class="meta">' + t.file + '</div>' +
+          '<div class="swatches">' + sw + '</div>' +
+          '<div class="frame"><iframe loading="lazy" title="' + t.id + '" src="' + t.file + '"></iframe></div>' +
+          '<div class="actions">' +
+            '<a href="' + t.file + '" target="_blank" rel="noopener">Open full page</a>' +
+            '<a class="secondary" href="' + t.file + '" target="_blank" rel="noopener">New tab</a>' +
+          '</div>';
+        g.appendChild(el);
+      });
+
+      /* ── Bulk generator ─────────────────────────────────── */
+      var btnBulk      = document.getElementById('btn-bulk');
+      var bulkStatus   = document.getElementById('bulk-status');
+      var bulkProgress = document.getElementById('bulk-progress');
+      var bulkFill     = document.getElementById('bulk-progress-fill');
+      var bulkLog      = document.getElementById('bulk-log');
+      var optFonts     = document.getElementById('opt-fonts');
+      var optSpacing   = document.getElementById('opt-spacing');
+      var totalDisplay = document.getElementById('bulk-total-display');
+
+      function calcTotal() {
+        var base = 20 * 15; // layouts × themes
+        if (optFonts.checked) base *= 5;
+        if (optSpacing.checked) base *= 3;
+        totalDisplay.textContent = base.toLocaleString();
+        return base;
+      }
+      optFonts.addEventListener('change', calcTotal);
+      optSpacing.addEventListener('change', calcTotal);
+
+      btnBulk.addEventListener('click', async function () {
+        if (typeof JSZip === 'undefined') {
+          bulkStatus.textContent = 'JSZip failed to load.';
+          return;
+        }
+        var total = calcTotal();
+        btnBulk.disabled = true;
+        bulkStatus.textContent = 'Generating ' + total + ' templates…';
+        bulkProgress.classList.add('visible');
+        bulkLog.textContent = '';
+        try {
+          var blob = await window.cvBulkBuildZipBlob({
+            JSZip: JSZip,
+            includeFonts: optFonts.checked,
+            includeSpacing: optSpacing.checked,
+            onProgress: function (n, name) {
+              bulkFill.style.width = (n / total * 100) + '%';
+              bulkLog.textContent = n + ' / ' + total + ' — ' + name + '\n' + bulkLog.textContent;
+            }
+          });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'cv-premium-bulk-' + total + '-' + new Date().toISOString().slice(0, 10) + '.zip';
+          a.click();
+          URL.revokeObjectURL(a.href);
+          bulkStatus.textContent = 'Done! ' + total + ' templates downloaded.';
+        } catch (e) {
+          console.error(e);
+          bulkStatus.textContent = 'Error: ' + (e.message || String(e));
+        } finally {
+          btnBulk.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

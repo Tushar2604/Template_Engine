@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Elena Whitaker layout</title>
+  <style id="cv-bulk-theme">:root{--t-accent:#2563eb;--t-accent-2:#3b82f6;--t-sidebar:#1a3652;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-muted:#6b7280;--t-ink:#111827;}</style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Montserrat, system-ui, sans-serif; background: #f5f5f5; color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; padding: 32px 36px 28px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    .head { text-align: center; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 4px solid #000; }
+    .head .pipe { padding: 0 4px; font-weight: 700; color: var(--t-teal); }
+    .head .contact-line { margin-top: 10px; font-size: .8rem; color: #000; font-weight: 400; }
+    .sec { margin-bottom: 22px; }
+    .sec h2 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; padding-bottom: 6px; border-bottom: 4px solid #000; margin-bottom: 14px; }
+    .row { display: flex; justify-content: space-between; gap: 16px; font-size: .82rem; align-items: baseline; }
+    .row .left { font-weight: 700; color: #000; }
+    .row .right { color: #000; font-weight: 400; text-align: right; }
+    .teal { color: var(--t-teal); font-weight: 700; }
+    .coursework { font-size: .78rem; margin-top: 8px; color: #000; }
+    .coursework strong { font-weight: 600; }
+    .coursework ul { margin: 4px 0 0 18px; }
+    .bullets { margin: 8px 0 0 18px; font-size: .8rem; line-height: 1.45; }
+    .proj-meta ul { margin: 6px 0 0 18px; font-size: .78rem; line-height: 1.5; }
+    .skills-line { font-size: .8rem; line-height: 1.55; }
+    .foot { margin-top: 20px; padding-top: 12px; font-size: .65rem; color: #888; display: flex; justify-content: space-between; }
+    @media print { body { background: #fff; } .sheet { box-shadow: none; margin: 0; } }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="head">
+      <p class="name-title" style="font-size:1.48rem;font-weight:700;color:var(--t-teal);line-height:1.3">
+        <span data-cv="fullNameElena"></span><span class="pipe"> | </span><span data-cv="professionalTitleElena"></span>
+      </p>
+      <p class="contact-line" data-cv="contactOneLine"></p>
+    </header>
+    <section class="sec">
+      <h2>EDUCATION</h2>
+      <div data-cv-list="educationDetailed">
+        <div>
+          <div class="row"><span class="left" data-cv-field="degree"></span><span class="right" data-cv-field="location"></span></div>
+          <div class="row" style="margin-top:4px"><span class="teal left" data-cv-field="school"></span><span class="right" data-cv-field="year"></span></div>
+          <div class="coursework"><strong>Relevant Coursework</strong><ul data-cv-each="coursework"><li></li></ul></div>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>EXPERIENCE</h2>
+      <div data-cv-list="experience">
+        <div>
+          <div class="row"><span class="left" data-cv-field="title"></span><span class="right" data-cv-field="location"></span></div>
+          <div class="row" style="margin-top:4px"><span class="teal left" data-cv-field="company"></span><span class="right"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <ul class="bullets" data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>PROJECTS</h2>
+      <div data-cv-list="projectsDetailed">
+        <div>
+          <div class="row"><span class="teal left" data-cv-field="title"></span><span class="right" data-cv-field="year"></span></div>
+          <div class="proj-meta"><ul data-cv-each="detailLines"><li></li></ul></div>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>CERTIFICATIONS</h2>
+      <div data-cv-list="certificationsDetailed">
+        <div>
+          <div class="row"><span class="teal left" data-cv-field="title"></span><span class="right" data-cv-field="year"></span></div>
+          <ul class="bullets" data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>SKILLS</h2>
+      <p class="skills-line" data-cv="skillsParagraph"></p>
+    </section>
+    <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

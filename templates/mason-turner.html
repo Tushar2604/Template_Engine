@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Mason Turner layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-sidebar:#1a3652;--t-accent:#2563eb;--t-muted:#6b7280;--t-accent-2:#3b82f6;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-ink:#111827;}</style>
+  <style>
+    :root { --blue: var(--t-accent); --muted: var(--t-muted); --ink: var(--t-ink); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter system-ui sans-serif; background: #f3f4f6; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; padding: 28px 32px 24px; box-shadow: 0 8px 40px rgba(0,0,0,.08); }
+    h1 { font-size: 1.85rem; font-weight: 700; color: #000; margin-bottom: 6px; }
+    .subtitle { color: var(--blue); font-size: .95rem; font-weight: 600; margin-bottom: 14px; }
+    .contact { display: flex; flex-wrap: wrap; gap: 12px 22px; font-size: .78rem; color: var(--muted); margin-bottom: 22px; }
+    .contact span { display: inline-flex; align-items: center; gap: 7px; }
+    .contact i { color: var(--blue); font-size: .85rem; }
+    .sec { margin-bottom: 22px; }
+    .sec h2 { font-size: .8rem; font-weight: 700; letter-spacing: .14em; color: #000; padding-bottom: 8px; border-bottom: 1px solid #d1d5db; margin-bottom: 12px; }
+    .lead { font-size: .82rem; line-height: 1.55; color: #374151; text-align: justify; }
+    .exp { margin-bottom: 18px; }
+    .exp .job { font-size: .88rem; font-weight: 700; color: #000; margin-bottom: 2px; }
+    .exp .co { font-size: .84rem; font-weight: 600; color: var(--blue); margin-bottom: 6px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: .74rem; color: var(--muted); margin-bottom: 8px; }
+    .meta span { display: inline-flex; align-items: center; gap: 5px; }
+    .meta i { color: #9ca3af; font-size: .8rem; }
+    .exp ul { margin: 0 0 0 18px; font-size: .8rem; line-height: 1.45; color: #374151; }
+    .exp ul li::marker { color: #9ca3af; }
+    .ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+    .ach-item { display: flex; gap: 12px; align-items: flex-start; }
+    .ach-item .ico { font-size: 1.35rem; color: var(--blue); margin-top: 2px; }
+    .ach-item h3 { font-size: .82rem; font-weight: 700; color: #000; margin-bottom: 4px; }
+    .ach-item p { font-size: .78rem; line-height: 1.45; color: #374151; }
+    .foot { display: flex; justify-content: space-between; font-size: .65rem; color: #9ca3af; margin-top: 8px; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;padding:24px;} }
+    @media (max-width: 700px) { .ach-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <h1 data-cv="fullName"></h1>
+    <p class="subtitle" data-cv="professionalTitleMason"></p>
+    <div class="contact">
+      <span><i class="fa-solid fa-phone"></i> <span data-cv="contact.phone"></span></span>
+      <span><i class="fa-solid fa-location-dot"></i> <span data-cv="contact.location"></span></span>
+      <span><i class="fa-regular fa-envelope"></i> <span data-cv="contact.email"></span></span>
+      <span><i class="fa-brands fa-linkedin-in"></i> <span data-cv="contact.linkedin"></span></span>
+    </div>
+    <section class="sec">
+      <h2>Summary</h2>
+      <p class="lead" data-cv="summary"></p>
+    </section>
+    <section class="sec">
+      <h2>Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="job" data-cv-field="title"></div>
+          <div class="co" data-cv-field="company"></div>
+          <div class="meta">
+            <span><i class="fa-regular fa-calendar"></i> <span data-cv-field="start"></span> – <span data-cv-field="end"></span></span>
+            <span><i class="fa-solid fa-location-dot"></i> <span data-cv-field="location"></span></span>
+          </div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="job" data-cv-field="degree"></div>
+          <div class="co" data-cv-field="school"></div>
+          <div class="meta">
+            <span><i class="fa-regular fa-calendar"></i> <span data-cv-field="start"></span> – <span data-cv-field="end"></span></span>
+            <span><i class="fa-solid fa-location-dot"></i> <span data-cv-field="location"></span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>Key Achievements</h2>
+      <div class="ach-grid" data-cv-list="achievements">
+        <div class="ach-item">
+          <i data-cv-fa="icon" class="ico fa-solid fa-flag"></i>
+          <div>
+            <h3 data-cv-field="title"></h3>
+            <p data-cv-field="description"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

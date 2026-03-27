@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Bold Header layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-sidebar:#1a3652;--t-accent:#2563eb;--t-muted:#6b7280;--t-accent-2:#3b82f6;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-ink:#111827;}</style>
+  <style>
+    :root { --dark: var(--t-sidebar); --accent: var(--t-accent); --accent2: var(--t-accent-2); --ink: var(--t-ink); --muted: var(--t-muted); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: #e5e7eb; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; box-shadow: 0 8px 40px rgba(0,0,0,.1); overflow: hidden; }
+
+    /* Large dark banner */
+    .banner {
+      background: var(--dark); color: #fff; padding: 32px 36px 28px;
+      position: relative;
+    }
+    .banner::after {
+      content: ''; position: absolute; bottom: -20px; left: 0; right: 0;
+      height: 40px; background: var(--dark);
+      clip-path: polygon(0 0, 100% 0, 100% 0%, 0 100%);
+    }
+    .banner h1 { font-size: 2.1rem; font-weight: 900; letter-spacing: -.02em; margin-bottom: 6px; }
+    .banner .sub { font-size: .92rem; font-weight: 400; opacity: .88; margin-bottom: 14px; }
+    .banner .contact { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .74rem; }
+    .banner .contact span { display: inline-flex; align-items: center; gap: 6px; opacity: .85; }
+    .banner .contact i { font-size: .68rem; }
+
+    .body { padding: 32px 36px 24px; }
+    .sec { margin-bottom: 22px; }
+    .sec h2 {
+      font-size: .74rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dark); margin-bottom: 12px; padding-bottom: 8px;
+      border-bottom: 2.5px solid var(--accent);
+    }
+    .summary { font-size: .82rem; line-height: 1.6; color: #374151; }
+
+    .exp { margin-bottom: 16px; }
+    .exp .row1 { display: flex; justify-content: space-between; align-items: baseline; }
+    .exp .role { font-size: .88rem; font-weight: 900; color: var(--ink); }
+    .exp .dates { font-size: .76rem; font-weight: 500; color: var(--muted); }
+    .exp .company { font-size: .84rem; font-weight: 700; color: var(--accent); margin-top: 2px; }
+    .exp .loc { font-size: .74rem; color: var(--muted); }
+    .exp ul { margin: 6px 0 0 18px; font-size: .78rem; line-height: 1.5; color: #374151; }
+    .exp ul li::marker { color: var(--accent); }
+
+    /* Skills as bold tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-bold { font-size: .72rem; font-weight: 700; padding: 6px 14px; border-radius: 4px; background: var(--dark); color: #fff; letter-spacing: .02em; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; }
+    .edu { margin-bottom: 12px; }
+    .edu .degree { font-size: .84rem; font-weight: 900; color: var(--ink); }
+    .edu .school { font-size: .8rem; font-weight: 600; color: var(--accent); margin-top: 1px; }
+    .edu .meta { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+
+    .ach { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start; }
+    .ach .badge { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+    .ach h3 { font-size: .8rem; font-weight: 900; color: var(--ink); margin-bottom: 2px; }
+    .ach p { font-size: .74rem; color: var(--muted); line-height: 1.4; }
+
+    .cert-item { margin-bottom: 8px; }
+    .cert-item h3 { font-size: .8rem; font-weight: 700; color: var(--ink); }
+    .cert-item p { font-size: .72rem; color: var(--muted); }
+
+    .lang-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: .76rem; }
+    .lang-row .name { font-weight: 700; color: var(--ink); min-width: 70px; }
+    .lang-row .dots { display: flex; gap: 5px; }
+    .lang-row .dot { width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--accent); }
+    .lang-row .dot.filled { background: var(--accent); }
+
+    .foot { padding: 10px 36px; display: flex; justify-content: space-between; font-size: .6rem; color: #d1d5db; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;overflow:visible;} .banner::after{display:none;} }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="banner">
+      <h1 data-cv="fullNameUpper"></h1>
+      <div class="sub" data-cv="professionalTitle"></div>
+      <div class="contact">
+        <span><i class="fa-regular fa-envelope"></i> <span data-cv="contact.email"></span></span>
+        <span><i class="fa-solid fa-phone"></i> <span data-cv="contact.phone"></span></span>
+        <span><i class="fa-brands fa-linkedin-in"></i> <span data-cv="contact.linkedin"></span></span>
+        <span><i class="fa-solid fa-location-dot"></i> <span data-cv="contact.location"></span></span>
+      </div>
+    </header>
+    <div class="body">
+      <section class="sec">
+        <h2>Summary</h2>
+        <p class="summary" data-cv="summary"></p>
+      </section>
+      <section class="sec">
+        <h2>Experience</h2>
+        <div data-cv-list="experience">
+          <div class="exp">
+            <div class="row1"><span class="role" data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+            <div class="company" data-cv-field="company"></div>
+            <div class="loc" data-cv-field="location"></div>
+            <ul data-cv-each="bullets"><li></li></ul>
+          </div>
+        </div>
+      </section>
+      <section class="sec">
+        <h2>Skills</h2>
+        <div class="tags" data-cv-tags data-tag-class="tag-bold"></div>
+      </section>
+      <div class="two-col">
+        <section class="sec">
+          <h2>Education</h2>
+          <div data-cv-list="education">
+            <div class="edu">
+              <div class="degree" data-cv-field="degree"></div>
+              <div class="school" data-cv-field="school"></div>
+              <div class="meta"><span data-cv-field="start"></span> – <span data-cv-field="end"></span> · <span data-cv-field="location"></span></div>
+            </div>
+          </div>
+        </section>
+        <section class="sec">
+          <h2>Achievements</h2>
+          <div data-cv-list="achievements">
+            <div class="ach">
+              <div class="badge"><i data-cv-fa="icon" class="fa-solid fa-star"></i></div>
+              <div><h3 data-cv-field="title"></h3><p data-cv-field="description"></p></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="two-col">
+        <section class="sec">
+          <h2>Certifications</h2>
+          <div data-cv-list="certifications">
+            <div class="cert-item">
+              <h3 data-cv-field="title"></h3>
+              <p data-cv-field="description"></p>
+            </div>
+          </div>
+        </section>
+        <section class="sec">
+          <h2>Languages</h2>
+          <div data-cv-lang-list>
+            <div class="lang-row">
+              <span class="name" data-cv-field="name"></span>
+              <span class="dots" data-dots></span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

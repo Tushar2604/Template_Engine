@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Maeve Delaney (Forest)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root { --forest: #2D5A43; --mint: #A8E6CF; --body: #333; --muted: #6b7c72; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter system-ui sans-serif; background: #f1f5f3; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; display: flex; box-shadow: 0 8px 40px rgba(0,0,0,.08); }
+    .side { width: 30%; padding: 24px 18px; border-right: 1px solid #e5ebe7; }
+    .blob-wrap { position: relative; width: 130px; height: 130px; margin: 0 auto 20px; }
+    .blob-wrap::before, .blob-wrap::after { content: ''; position: absolute; border-radius: 55% 45% 50% 50% / 50% 50% 48% 52%; opacity: .5; }
+    .blob-wrap::before { width: 150px; height: 140px; background: #d4f5e5; left: -14px; top: -6px; }
+    .blob-wrap::after { width: 120px; height: 120px; background: var(--mint); right: -6px; bottom: -4px; }
+    .blob-wrap img { position: relative; z-index: 1; width: 108px; height: 108px; border-radius: 50%; object-fit: cover; left: 11px; top: 11px; border: 3px solid #fff; }
+    .sec-h { display: flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .1em; color: var(--forest); margin: 16px 0 10px; }
+    .sec-h i { font-size: .85rem; color: var(--forest); }
+    .cnt-line { display: flex; gap: 10px; font-size: .74rem; color: var(--body); margin-bottom: 9px; align-items: flex-start; }
+    .cnt-line i { color: var(--forest); margin-top: 3px; width: 14px; }
+    .side .ach ul { list-style: none; padding: 0; margin: 0; }
+    .side .ach li { position: relative; padding-left: 14px; margin-bottom: 10px; font-size: .74rem; line-height: 1.45; color: var(--body); }
+    .side .ach li::before { content: ''; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--forest); }
+    .side .ach strong { display: block; font-size: .78rem; margin-bottom: 3px; color: #1a202c; }
+    .side .ach li span { display: block; margin-top: 2px; }
+    .course { margin-bottom: 10px; }
+    .course h3 { font-size: .78rem; font-weight: 700; color: var(--forest); margin-bottom: 3px; }
+    .course p { font-size: .72rem; color: var(--body); line-height: 1.4; }
+    .main { flex: 1; padding: 26px 26px 22px; }
+    .main h1 { font-size: 1.6rem; font-weight: 700; color: #000; margin-bottom: 10px; }
+    .title-bar {
+      background: var(--mint);
+      color: var(--forest);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-align: center;
+      padding: 10px 12px;
+      border-radius: 10px;
+      line-height: 1.45;
+      margin-bottom: 20px;
+      border: 1px solid rgba(45,90,67,.12);
+    }
+    .main .sec-h { margin-top: 6px; }
+    .line { height: 1px; background: #dfe8e3; margin: 12px 0 14px; }
+    .summary { font-size: .8rem; line-height: 1.55; color: var(--body); }
+    .exp { margin-bottom: 16px; }
+    .exp .r1, .exp .r2 { display: flex; justify-content: space-between; gap: 10px; font-size: .82rem; }
+    .exp .r1 .co { font-weight: 700; color: #000; }
+    .exp .r1 .loc { color: var(--muted); font-size: .78rem; }
+    .exp .r2 { margin-top: 3px; }
+    .exp .r2 .title { font-weight: 700; color: #000; }
+    .exp .r2 .dates { color: var(--muted); font-size: .78rem; }
+    .exp ul { list-style: none; margin: 8px 0 0; padding: 0; font-size: .78rem; line-height: 1.45; color: var(--body); }
+    .exp ul li { padding-left: 14px; position: relative; margin-bottom: 4px; }
+    .exp ul li::before { content: ''; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--forest); }
+    .foot { display: flex; justify-content: space-between; font-size: .65rem; color: #8896a0; margin-top: 18px; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;} }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <aside class="side">
+      <div class="blob-wrap"><img data-cv-photo src="" alt="" /></div>
+      <div class="sec-h"><i class="fa-regular fa-envelope"></i> CONTACTS</div>
+      <div class="cnt-line"><i class="fa-solid fa-phone"></i><span data-cv="contact.phone"></span></div>
+      <div class="cnt-line"><i class="fa-regular fa-envelope"></i><span data-cv="contact.email"></span></div>
+      <div class="cnt-line"><i class="fa-brands fa-linkedin-in"></i><span data-cv="contact.linkedin"></span></div>
+      <div class="cnt-line"><i class="fa-solid fa-location-dot"></i><span data-cv="contact.location"></span></div>
+      <div class="sec-h"><i class="fa-solid fa-flag"></i> KEY ACHIEVEMENTS</div>
+      <div class="ach"><ul data-cv-list="achievements"><li><strong data-cv-field="title"></strong><span data-cv-field="description"></span></li></ul></div>
+      <div class="sec-h"><i class="fa-regular fa-file-lines"></i> COURSES</div>
+      <div data-cv-list="courses">
+        <div class="course">
+          <h3 data-cv-field="title"></h3>
+          <p data-cv-field="description"></p>
+        </div>
+      </div>
+    </aside>
+    <main class="main">
+      <h1 data-cv="fullName"></h1>
+      <div class="title-bar" data-cv="professionalTitleMaeveUpper"></div>
+      <div class="sec-h"><i class="fa-regular fa-user"></i> SUMMARY</div>
+      <div class="line"></div>
+      <p class="summary" data-cv="summary"></p>
+      <div class="sec-h" style="margin-top:18px"><i class="fa-solid fa-briefcase"></i> EXPERIENCE</div>
+      <div class="line"></div>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="r1"><span class="co" data-cv-field="company"></span><span class="loc" data-cv-field="location"></span></div>
+          <div class="r2"><span class="title" data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+      <div class="sec-h" style="margin-top:16px"><i class="fa-solid fa-graduation-cap"></i> EDUCATION</div>
+      <div class="line"></div>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="r1"><span class="co" data-cv-field="school"></span><span class="loc" data-cv-field="location"></span></div>
+          <div class="r2"><span class="title" data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+        </div>
+      </div>
+      <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+    </main>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

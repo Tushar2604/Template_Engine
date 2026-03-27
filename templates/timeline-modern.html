@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Timeline layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-sidebar:#1a3652;--t-accent:#2563eb;--t-muted:#6b7280;--t-accent-2:#3b82f6;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-ink:#111827;}</style>
+  <style>
+    :root { --accent: var(--t-accent); --ink: var(--t-ink); --muted: var(--t-muted); --accent2: var(--t-accent-2); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: #eef1f5; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; box-shadow: 0 8px 40px rgba(0,0,0,.1); }
+
+    /* Header strip */
+    .head { background: var(--accent); color: #fff; padding: 26px 36px; display: flex; justify-content: space-between; align-items: center; }
+    .head-left h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: .03em; }
+    .head-left .sub { font-size: .85rem; opacity: .92; margin-top: 4px; font-weight: 400; }
+    .head-right { display: flex; flex-direction: column; gap: 6px; font-size: .74rem; align-items: flex-end; }
+    .head-right span { display: inline-flex; align-items: center; gap: 6px; opacity: .92; }
+    .head-right i { font-size: .7rem; opacity: .8; }
+
+    .body { padding: 24px 36px 28px; }
+    .sec { margin-bottom: 24px; }
+    .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .sec-head .icon-circle { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .72rem; flex-shrink: 0; }
+    .sec-head h2 { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+
+    .summary { font-size: .82rem; line-height: 1.6; color: #374151; padding-left: 40px; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before { content: ''; position: absolute; left: 14px; top: 4px; bottom: 0; width: 2px; background: #e5e7eb; }
+    .tl-item { position: relative; margin-bottom: 20px; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -30px; top: 5px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #fff; border: 2.5px solid var(--accent); z-index: 1;
+    }
+    .tl-item .role { font-size: .86rem; font-weight: 700; color: var(--ink); }
+    .tl-item .co-line { display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px; gap: 10px; }
+    .tl-item .company { font-size: .82rem; font-weight: 600; color: var(--accent); }
+    .tl-item .dates { font-size: .74rem; color: var(--muted); white-space: nowrap; }
+    .tl-item .loc { font-size: .72rem; color: var(--muted); margin-top: 1px; }
+    .tl-item ul { margin: 6px 0 0 16px; font-size: .78rem; line-height: 1.5; color: #374151; }
+    .tl-item ul li::marker { color: var(--accent); }
+
+    /* Education timeline */
+    .edu-tl { position: relative; margin-bottom: 14px; }
+    .edu-tl .degree { font-size: .84rem; font-weight: 700; color: var(--ink); }
+    .edu-tl .school { font-size: .8rem; font-weight: 600; color: var(--accent); margin-top: 1px; }
+    .edu-tl .meta { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+
+    /* Skills */
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 40px; }
+    .chip { font-size: .72rem; font-weight: 600; padding: 6px 14px; border-radius: 6px; background: color-mix(in srgb, var(--accent) 10%, #fff); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 25%, #fff); }
+
+    /* Two column bottom */
+    .bottom-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; padding-left: 40px; }
+    .ach-item { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 12px; }
+    .ach-item i { color: var(--accent); margin-top: 2px; font-size: .8rem; }
+    .ach-item h3 { font-size: .8rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+    .ach-item p { font-size: .74rem; color: #6b7280; line-height: 1.4; }
+
+    .lang-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: .78rem; }
+    .lang-row .name { font-weight: 600; color: var(--ink); min-width: 80px; }
+    .lang-row .bar { flex: 1; height: 6px; border-radius: 99px; background: #f3f4f6; overflow: hidden; max-width: 120px; }
+    .lang-row .bar i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+
+    .foot { padding: 12px 36px; display: flex; justify-content: space-between; font-size: .62rem; color: #d1d5db; border-top: 1px solid #f3f4f6; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;} }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="head">
+      <div class="head-left">
+        <h1 data-cv="fullName"></h1>
+        <div class="sub" data-cv="professionalTitle"></div>
+      </div>
+      <div class="head-right">
+        <span><span data-cv="contact.email"></span> <i class="fa-regular fa-envelope"></i></span>
+        <span><span data-cv="contact.phone"></span> <i class="fa-solid fa-phone"></i></span>
+        <span><span data-cv="contact.linkedin"></span> <i class="fa-brands fa-linkedin-in"></i></span>
+        <span><span data-cv="contact.location"></span> <i class="fa-solid fa-location-dot"></i></span>
+      </div>
+    </header>
+    <div class="body">
+      <section class="sec">
+        <div class="sec-head"><div class="icon-circle"><i class="fa-solid fa-user"></i></div><h2>Summary</h2></div>
+        <p class="summary" data-cv="summary"></p>
+      </section>
+      <section class="sec">
+        <div class="sec-head"><div class="icon-circle"><i class="fa-solid fa-briefcase"></i></div><h2>Experience</h2></div>
+        <div class="timeline" data-cv-list="experience">
+          <div class="tl-item">
+            <div class="role" data-cv-field="title"></div>
+            <div class="co-line"><span class="company" data-cv-field="company"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+            <div class="loc" data-cv-field="location"></div>
+            <ul data-cv-each="bullets"><li></li></ul>
+          </div>
+        </div>
+      </section>
+      <section class="sec">
+        <div class="sec-head"><div class="icon-circle"><i class="fa-solid fa-graduation-cap"></i></div><h2>Education</h2></div>
+        <div class="timeline" data-cv-list="education">
+          <div class="edu-tl tl-item">
+            <div class="degree" data-cv-field="degree"></div>
+            <div class="school" data-cv-field="school"></div>
+            <div class="meta"><span data-cv-field="start"></span> – <span data-cv-field="end"></span> · <span data-cv-field="location"></span></div>
+          </div>
+        </div>
+      </section>
+      <section class="sec">
+        <div class="sec-head"><div class="icon-circle"><i class="fa-solid fa-code"></i></div><h2>Skills</h2></div>
+        <div class="skill-chips" data-cv-tags data-tag-class="chip"></div>
+      </section>
+      <section class="sec">
+        <div class="sec-head"><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><h2>Achievements</h2></div>
+        <div style="padding-left:40px" data-cv-list="achievements">
+          <div class="ach-item">
+            <i data-cv-fa="icon" class="fa-solid fa-star"></i>
+            <div><h3 data-cv-field="title"></h3><p data-cv-field="description"></p></div>
+          </div>
+        </div>
+      </section>
+      <section class="sec">
+        <div class="sec-head"><div class="icon-circle"><i class="fa-solid fa-globe"></i></div><h2>Languages</h2></div>
+        <div style="padding-left:40px" data-cv-lang-bars></div>
+      </section>
+    </div>
+    <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

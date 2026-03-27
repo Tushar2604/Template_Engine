@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Grace Jackson layout</title>
+  <style id="cv-bulk-theme">:root{--t-accent:#2563eb;--t-accent-2:#3b82f6;--t-sidebar:#1a3652;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-muted:#666666;--t-ink:#333333;}</style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Montserrat, system-ui, sans-serif; background: #f0f2f5; color: var(--t-ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+    .head { padding: 26px 32px 18px; border-bottom: 1px solid #e5e5e5; }
+    .head h1 { font-size: 1.55rem; font-weight: 700; letter-spacing: .08em; color: #1a1a1a; margin-bottom: 6px; }
+    .head .tag { color: var(--t-cyan); font-size: .88rem; font-weight: 600; margin-bottom: 12px; }
+    .head-contact { display: flex; flex-wrap: wrap; gap: 14px 22px; font-size: .78rem; color: var(--t-cyan); }
+    .head-contact span { display: inline-flex; align-items: center; gap: 6px; }
+    .head-contact i { font-size: .8rem; }
+    .cols { display: flex; }
+    .main { width: 60%; padding: 22px 24px 26px 32px; border-right: 1px solid #eee; }
+    .side { width: 40%; padding: 22px 32px 26px 24px; }
+    .sec h2 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; color: #3a3a3a; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #000; }
+    .sum { font-size: .8rem; line-height: 1.55; color: #333; }
+    .exp { margin-bottom: 18px; }
+    .exp .row1 { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .exp .job { font-size: .86rem; font-weight: 700; color: var(--t-ink); }
+    .exp .co { font-size: .82rem; font-weight: 700; color: var(--t-cyan); margin-top: 4px; }
+    .exp .meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: .72rem; color: var(--t-muted); margin-top: 6px; justify-content: flex-end; }
+    .exp .meta span { display: inline-flex; align-items: center; gap: 4px; }
+    .exp .meta i { color: #999; }
+    .exp ul { margin: 8px 0 0 18px; font-size: .78rem; line-height: 1.45; color: #333; }
+    .ach { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+    .ach .ico-wrap { width: 36px; height: 36px; border-radius: 50%; background: rgba(0,168,197,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--t-cyan); font-size: .85rem; }
+    .ach h3 { font-size: .82rem; font-weight: 700; color: var(--t-ink); margin-bottom: 4px; }
+    .ach p { font-size: .76rem; line-height: 1.45; color: #555; }
+    .comp { font-size: .78rem; line-height: 1.55; color: #555; }
+    .course h3 { font-size: .8rem; font-weight: 700; color: var(--t-cyan); margin-bottom: 4px; }
+    .course p { font-size: .75rem; line-height: 1.45; color: #555; margin-bottom: 12px; }
+    .foot { padding: 12px 32px 16px; font-size: .65rem; color: #999; display: flex; justify-content: space-between; border-top: 1px solid #eee; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;} }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="head">
+      <h1 data-cv="fullNameUpperGrace"></h1>
+      <p class="tag" data-cv="professionalTitleGrace"></p>
+      <div class="head-contact">
+        <span><i class="fa-regular fa-envelope"></i> <span data-cv="contact.email"></span></span>
+        <span><i class="fa-brands fa-linkedin-in"></i> <span data-cv="contact.linkedin"></span></span>
+        <span><i class="fa-solid fa-location-dot"></i> <span data-cv="contact.location"></span></span>
+      </div>
+    </header>
+    <div class="cols">
+      <main class="main">
+        <section class="sec">
+          <h2>SUMMARY</h2>
+          <p class="sum" data-cv="summary"></p>
+        </section>
+        <section class="sec" style="margin-top:20px">
+          <h2>EXPERIENCE</h2>
+          <div data-cv-list="experience">
+            <div class="exp">
+              <div class="row1">
+                <div>
+                  <div class="job" data-cv-field="title"></div>
+                  <div class="co" data-cv-field="company"></div>
+                </div>
+                <div class="meta">
+                  <span><i class="fa-regular fa-calendar"></i> <span data-cv-field="start"></span> – <span data-cv-field="end"></span></span>
+                  <span><i class="fa-solid fa-location-dot"></i> <span data-cv-field="location"></span></span>
+                </div>
+              </div>
+              <ul data-cv-each="bullets"><li></li></ul>
+            </div>
+          </div>
+        </section>
+      </main>
+      <aside class="side">
+        <section class="sec">
+          <h2>KEY ACHIEVEMENTS</h2>
+          <div data-cv-list="achievements">
+            <div class="ach">
+              <div class="ico-wrap"><i data-cv-fa="icon" class="fa-solid fa-lightbulb"></i></div>
+              <div>
+                <h3 data-cv-field="title"></h3>
+                <p data-cv-field="description"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="sec" style="margin-top:18px">
+          <h2>CORE COMPETENCIES</h2>
+          <p class="comp" data-cv="skillsCoreCompetencies"></p>
+        </section>
+        <section class="sec" style="margin-top:18px">
+          <h2>TRAINING &amp; COURSES</h2>
+          <div data-cv-list="courses">
+            <div class="course">
+              <h3 data-cv-field="title"></h3>
+              <p data-cv-field="description"></p>
+            </div>
+          </div>
+        </section>
+        <section class="sec" style="margin-top:18px">
+          <h2>EDUCATION</h2>
+          <div data-cv-list="education">
+            <div class="exp">
+              <div class="job" data-cv-field="degree"></div>
+              <div class="co" data-cv-field="school"></div>
+              <div class="meta" style="justify-content:flex-start;margin-top:6px">
+                <span><i class="fa-regular fa-calendar"></i> <span data-cv-field="start"></span> – <span data-cv-field="end"></span></span>
+                <span><i class="fa-solid fa-location-dot"></i> <span data-cv-field="location"></span></span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+    <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "cv-template-engine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium CV template factory – preview and export-ready HTML templates",
+  "scripts": {
+    "dev": "npx --yes serve . -p 5173",
+    "start": "npx --yes serve . -p 5173"
+  }
+}

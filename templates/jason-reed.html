@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Jason Reed layout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-sidebar:#1a3652;--t-accent:#3897f0;--t-muted:#718096;--t-accent-2:#5eb0f6;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-ink:#1a202c;}</style>
+  <style>
+    :root {
+      --navy: var(--t-sidebar);
+      --accent: var(--t-accent);
+      --muted: var(--t-muted);
+      --paper: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter system-ui sans-serif; background: #e2e8f0; color: #1a202c; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 12px auto;
+      background: var(--paper);
+      display: flex;
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+    }
+    .sidebar {
+      width: 30%;
+      background: var(--navy);
+      color: #fff;
+      padding: 28px 22px 20px;
+      flex-shrink: 0;
+    }
+    .sidebar h1 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+    .sb-sec { margin-bottom: 22px; }
+    .sb-sec h2 {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,.35);
+    }
+    .ach-row { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start; }
+    .ach-row .ico { color: #fff; font-size: .85rem; margin-top: 3px; opacity: .95; }
+    .ach-row h3 { font-size: .78rem; font-weight: 700; margin-bottom: 4px; line-height: 1.25; }
+    .ach-row p { font-size: .72rem; line-height: 1.45; opacity: .92; }
+    .cert-row { margin-bottom: 12px; }
+    .cert-row h3 { font-size: .78rem; font-weight: 700; margin-bottom: 3px; }
+    .cert-row p { font-size: .72rem; opacity: .9; line-height: 1.4; }
+    .quote { font-size: .74rem; line-height: 1.5; opacity: .92; font-style: italic; }
+    .quote .author { display: block; margin-top: 8px; font-style: normal; opacity: .85; }
+    .lang-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: .74rem; }
+    .dots { display: flex; gap: 4px; }
+    .dots .dot { width: 7px; height: 7px; border-radius: 50%; border: 1px solid rgba(255,255,255,.5); }
+    .dots .dot.filled { background: #fff; border-color: #fff; }
+    .sb-footer { margin-top: auto; padding-top: 16px; font-size: .65rem; opacity: .55; }
+    .main { flex: 1; padding: 28px 26px 24px; }
+    .tagline { color: var(--accent); font-size: .9rem; font-weight: 600; margin-bottom: 12px; line-height: 1.35; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 14px 20px; font-size: .76rem; color: var(--muted); margin-bottom: 22px; }
+    .contact-row span { display: inline-flex; align-items: center; gap: 6px; }
+    .contact-row i { color: #cbd5e0; font-size: .8rem; }
+    .main-sec { margin-bottom: 20px; }
+    .main-sec h2 {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: #1a202c;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 12px;
+    }
+    .summary { font-size: .8rem; line-height: 1.55; color: #2d3748; text-align: justify; }
+    .exp-block { margin-bottom: 18px; }
+    .exp-line1, .exp-line2 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: .82rem; }
+    .exp-line1 { font-weight: 700; color: #1a202c; }
+    .exp-line1 .dates { font-weight: 400; color: var(--muted); font-size: .78rem; white-space: nowrap; }
+    .exp-line2 { margin-top: 3px; }
+    .exp-line2 .company { font-weight: 700; color: var(--accent); }
+    .exp-line2 .loc { color: var(--muted); font-size: .78rem; }
+    .exp-block ul { margin: 8px 0 0 18px; font-size: .78rem; line-height: 1.45; color: #2d3748; }
+    .skills-line { font-size: .78rem; color: #2d3748; line-height: 1.6; }
+    .skills-line .sep { color: #cbd5e0; padding: 0 6px; }
+    .main-footer { display: flex; justify-content: flex-end; font-size: .65rem; color: #a0aec0; margin-top: 12px; }
+    @media print {
+      body { background: #fff; }
+      .sheet { box-shadow: none; margin: 0; width: 100%; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <aside class="sidebar">
+      <h1 data-cv="fullNameUpper">JORDAN SMITH</h1>
+      <div class="sb-sec">
+        <h2>Key Achievements</h2>
+        <div data-cv-list="achievements">
+          <div class="ach-row">
+            <i data-cv-fa="icon" class="ico fa-solid fa-star"></i>
+            <div>
+              <h3 data-cv-field="title"></h3>
+              <p data-cv-field="description"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-sec">
+        <h2>Certification</h2>
+        <div data-cv-list="certifications">
+          <div class="cert-row">
+            <h3 data-cv-field="title"></h3>
+            <p data-cv-field="description"></p>
+          </div>
+        </div>
+      </div>
+      <div class="sb-sec">
+        <h2>Passions</h2>
+        <div data-cv-list="passions">
+          <div class="ach-row">
+            <i data-cv-fa="icon" class="ico fa-solid fa-flag"></i>
+            <div>
+              <h3 data-cv-field="title"></h3>
+              <p data-cv-field="description"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-sec">
+        <h2>Favorite Quote</h2>
+        <p class="quote"><span data-cv="quote.text"></span><span class="author">— <span data-cv="quote.author"></span></span></p>
+      </div>
+      <div class="sb-sec">
+        <h2>Languages</h2>
+        <div data-cv-lang-list>
+          <div class="lang-row">
+            <div><strong data-cv-field="name"></strong> <span style="opacity:.85" data-cv-field="level"></span></div>
+            <span class="dots" data-dots></span>
+          </div>
+        </div>
+      </div>
+      <div class="sb-footer"><span data-cv="footerBrand"></span></div>
+    </aside>
+    <main class="main">
+      <p class="tagline" data-cv="professionalTitle"></p>
+      <div class="contact-row">
+        <span><i class="fa-regular fa-envelope"></i> <span data-cv="contact.email"></span></span>
+        <span><i class="fa-brands fa-linkedin-in"></i> <span data-cv="contact.linkedin"></span></span>
+        <span><i class="fa-solid fa-location-dot"></i> <span data-cv="contact.location"></span></span>
+      </div>
+      <section class="main-sec">
+        <h2>Summary</h2>
+        <p class="summary" data-cv="summary"></p>
+      </section>
+      <section class="main-sec">
+        <h2>Experience</h2>
+        <div data-cv-list="experience">
+          <div class="exp-block">
+            <div class="exp-line1"><span data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+            <div class="exp-line2"><span class="company" data-cv-field="company"></span><span class="loc" data-cv-field="location"></span></div>
+            <ul data-cv-each="bullets"><li></li></ul>
+          </div>
+        </div>
+      </section>
+      <section class="main-sec">
+        <h2>Skills</h2>
+        <p class="skills-line" data-cv="skillsInline"></p>
+      </section>
+      <section class="main-sec">
+        <h2>Education</h2>
+        <div data-cv-list="education">
+          <div class="exp-block">
+            <div class="exp-line1"><span data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+            <div class="exp-line2"><span class="company" data-cv-field="school"></span><span class="loc" data-cv-field="location"></span></div>
+          </div>
+        </div>
+      </section>
+      <div class="main-footer"><span data-cv="footerUrl"></span></div>
+    </main>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

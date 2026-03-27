@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Split Header layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-sidebar:#1a3652;--t-accent:#2563eb;--t-muted:#6b7280;--t-accent-2:#3b82f6;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-ink:#111827;}</style>
+  <style>
+    :root { --accent: var(--t-accent); --ink: var(--t-ink); --muted: var(--t-muted); --accent2: var(--t-accent-2); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Montserrat, system-ui, sans-serif; background: #e5e7eb; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; box-shadow: 0 8px 40px rgba(0,0,0,.1); }
+
+    /* Split header: name left, contact right */
+    .head { display: flex; justify-content: space-between; align-items: stretch; border-bottom: 3px solid var(--accent); }
+    .head-name { padding: 28px 28px 20px; flex: 1; }
+    .head-name h1 { font-size: 1.75rem; font-weight: 800; color: var(--ink); letter-spacing: .02em; line-height: 1.1; margin-bottom: 6px; }
+    .head-name .sub { font-size: .88rem; color: var(--accent); font-weight: 600; line-height: 1.35; }
+    .head-contact {
+      background: var(--accent); color: #fff; padding: 20px 24px;
+      display: flex; flex-direction: column; justify-content: center; gap: 8px; font-size: .74rem; min-width: 220px;
+    }
+    .head-contact div { display: flex; align-items: center; gap: 8px; }
+    .head-contact i { width: 16px; opacity: .8; font-size: .72rem; }
+
+    .body { padding: 22px 28px 24px; }
+    .sec { margin-bottom: 20px; }
+    .sec h2 {
+      font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--ink); margin-bottom: 10px; padding-bottom: 6px;
+      border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; gap: 8px;
+    }
+    .sec h2 i { color: var(--accent); font-size: .72rem; }
+
+    .summary { font-size: .8rem; line-height: 1.6; color: #374151; text-align: justify; }
+    .two-col-body { display: grid; grid-template-columns: 5fr 3fr; gap: 0 28px; }
+
+    .exp { margin-bottom: 16px; }
+    .exp .role { font-size: .86rem; font-weight: 800; color: var(--ink); }
+    .exp .co { font-size: .82rem; font-weight: 700; color: var(--accent); margin-top: 1px; }
+    .exp .meta { font-size: .7rem; color: var(--muted); margin-top: 3px; }
+    .exp ul { margin: 5px 0 0 16px; font-size: .78rem; line-height: 1.5; color: #374151; }
+    .exp ul li::marker { color: var(--accent); }
+
+    .edu { margin-bottom: 12px; }
+    .edu .degree { font-size: .82rem; font-weight: 800; color: var(--ink); }
+    .edu .school { font-size: .78rem; font-weight: 600; color: var(--accent); margin-top: 1px; }
+    .edu .meta { font-size: .7rem; color: var(--muted); margin-top: 2px; }
+
+    .tag { display: inline-block; font-size: .72rem; font-weight: 600; padding: 5px 12px; margin: 0 6px 6px 0; border-radius: 4px; background: #f3f4f6; color: var(--ink); }
+
+    .ach-item { display: flex; gap: 8px; margin-bottom: 12px; }
+    .ach-item i { color: var(--accent); font-size: .8rem; margin-top: 2px; }
+    .ach-item h3 { font-size: .78rem; font-weight: 800; color: var(--ink); margin-bottom: 2px; }
+    .ach-item p { font-size: .72rem; color: var(--muted); line-height: 1.4; }
+
+    .cert-item { margin-bottom: 8px; padding-left: 12px; border-left: 2px solid var(--accent); }
+    .cert-item h3 { font-size: .78rem; font-weight: 700; color: var(--ink); }
+    .cert-item p { font-size: .7rem; color: var(--muted); }
+
+    .lang-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: .76rem; }
+    .lang-row .name { font-weight: 700; color: var(--ink); min-width: 70px; }
+    .lang-row .bar { flex: 1; height: 7px; border-radius: 99px; background: #f3f4f6; overflow: hidden; }
+    .lang-row .bar i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+
+    .foot { padding: 10px 28px; display: flex; justify-content: space-between; font-size: .6rem; color: #d1d5db; border-top: 1px solid #f3f4f6; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;} }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="head">
+      <div class="head-name">
+        <h1 data-cv="fullName"></h1>
+        <div class="sub" data-cv="professionalTitle"></div>
+      </div>
+      <div class="head-contact">
+        <div><i class="fa-regular fa-envelope"></i> <span data-cv="contact.email"></span></div>
+        <div><i class="fa-solid fa-phone"></i> <span data-cv="contact.phone"></span></div>
+        <div><i class="fa-brands fa-linkedin-in"></i> <span data-cv="contact.linkedin"></span></div>
+        <div><i class="fa-solid fa-location-dot"></i> <span data-cv="contact.location"></span></div>
+      </div>
+    </header>
+    <div class="body">
+      <section class="sec">
+        <h2><i class="fa-solid fa-user-tie"></i> Summary</h2>
+        <p class="summary" data-cv="summary"></p>
+      </section>
+      <div class="two-col-body">
+        <div>
+          <section class="sec">
+            <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+            <div data-cv-list="experience">
+              <div class="exp">
+                <div class="role" data-cv-field="title"></div>
+                <div class="co" data-cv-field="company"></div>
+                <div class="meta"><span data-cv-field="start"></span> – <span data-cv-field="end"></span> · <span data-cv-field="location"></span></div>
+                <ul data-cv-each="bullets"><li></li></ul>
+              </div>
+            </div>
+          </section>
+          <section class="sec">
+            <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+            <div data-cv-list="education">
+              <div class="edu">
+                <div class="degree" data-cv-field="degree"></div>
+                <div class="school" data-cv-field="school"></div>
+                <div class="meta"><span data-cv-field="start"></span> – <span data-cv-field="end"></span> · <span data-cv-field="location"></span></div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div>
+          <section class="sec">
+            <h2><i class="fa-solid fa-code"></i> Skills</h2>
+            <div data-cv-tags data-tag-class="tag"></div>
+          </section>
+          <section class="sec">
+            <h2><i class="fa-solid fa-trophy"></i> Achievements</h2>
+            <div data-cv-list="achievements">
+              <div class="ach-item">
+                <i data-cv-fa="icon" class="fa-solid fa-star"></i>
+                <div><h3 data-cv-field="title"></h3><p data-cv-field="description"></p></div>
+              </div>
+            </div>
+          </section>
+          <section class="sec">
+            <h2><i class="fa-solid fa-certificate"></i> Certifications</h2>
+            <div data-cv-list="certifications">
+              <div class="cert-item">
+                <h3 data-cv-field="title"></h3>
+                <p data-cv-field="description"></p>
+              </div>
+            </div>
+          </section>
+          <section class="sec">
+            <h2><i class="fa-solid fa-globe"></i> Languages</h2>
+            <div data-cv-lang-bars></div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

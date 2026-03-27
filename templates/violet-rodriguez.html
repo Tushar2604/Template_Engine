@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Violet Rodriguez layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-sidebar:#1e293b;--t-accent:#3b82f6;--t-muted:#666666;--t-accent-2:#60a5fa;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-ink:#000000;}</style>
+  <style>
+    :root { --accent: var(--t-accent); --muted: var(--t-muted); --ink: var(--t-ink); --body: #333; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter system-ui sans-serif; background: #f4f4f5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; box-shadow: 0 8px 40px rgba(0,0,0,.08); }
+    .head { padding: 24px 28px 20px; border-bottom: 1px solid #e5e7eb; }
+    .head h1 { font-size: 1.65rem; font-weight: 700; letter-spacing: .06em; color: var(--ink); margin-bottom: 6px; }
+    .head .sub { color: var(--accent); font-size: .9rem; font-weight: 600; margin-bottom: 12px; }
+    .head .contact { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: .75rem; color: var(--muted); }
+    .head .contact span { display: inline-flex; align-items: center; gap: 6px; }
+    .head .contact i { color: #9ca3af; font-size: .78rem; }
+    .grid { display: flex; min-height: 240mm; }
+    .col-l { width: 33%; padding: 22px 20px 24px 26px; border-right: 1px solid #e5e7eb; }
+    .col-r { flex: 1; padding: 22px 26px 24px 22px; }
+    .sec h2 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid #ddd; margin-bottom: 12px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: .72rem; padding: 5px 10px; border: 1px solid #e5e7eb; border-radius: 4px; color: var(--ink); }
+    .proj { margin-bottom: 14px; }
+    .proj h3 { font-size: .82rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .proj p { font-size: .76rem; line-height: 1.45; color: var(--body); margin-bottom: 4px; }
+    .proj a { font-size: .74rem; color: var(--accent); text-decoration: none; }
+    .ach { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+    .ach .badge { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .9rem; }
+    .ach:nth-child(3n+1) .badge { background: #dbeafe; color: #1d4ed8; }
+    .ach:nth-child(3n+2) .badge { background: #ffedd5; color: #c2410c; }
+    .ach:nth-child(3n) .badge { background: #e0e7ff; color: #4338ca; }
+    .ach h3 { font-size: .82rem; font-weight: 700; margin-bottom: 4px; }
+    .ach p { font-size: .76rem; color: var(--body); line-height: 1.45; }
+    .sum { font-size: .8rem; line-height: 1.55; color: var(--body); margin-bottom: 18px; }
+    .exp { margin-bottom: 16px; }
+    .exp .job { font-size: .86rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+    .exp .co { font-size: .82rem; font-weight: 600; color: var(--accent); }
+    .exp .row2 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 6px; flex-wrap: wrap; }
+    .exp .meta { font-size: .74rem; color: var(--muted); display: flex; gap: 12px; align-items: center; }
+    .exp .meta span { display: inline-flex; align-items: center; gap: 4px; }
+    .exp ul { margin: 8px 0 0 18px; font-size: .78rem; line-height: 1.45; color: var(--body); }
+    .foot { padding: 12px 28px 14px; display: flex; justify-content: space-between; font-size: .65rem; color: #9ca3af; border-top: 1px solid #f3f4f6; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;} }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="head">
+      <h1 data-cv="fullNameUpper">NAME</h1>
+      <p class="sub" data-cv="professionalTitleViolet"></p>
+      <div class="contact">
+        <span><i class="fa-solid fa-phone"></i> <span data-cv="contact.phone"></span></span>
+        <span><i class="fa-regular fa-envelope"></i> <span data-cv="contact.email"></span></span>
+        <span><i class="fa-brands fa-linkedin-in"></i> <span data-cv="contact.linkedin"></span></span>
+        <span><i class="fa-brands fa-github"></i> <span data-cv="contact.github"></span></span>
+        <span><i class="fa-solid fa-location-dot"></i> <span data-cv="contact.location"></span></span>
+      </div>
+    </header>
+    <div class="grid">
+      <aside class="col-l">
+        <section class="sec">
+          <h2>Skills</h2>
+          <div class="tags" data-cv-tags data-tag-class="tag"></div>
+        </section>
+        <section class="sec" style="margin-top:20px">
+          <h2>My Projects</h2>
+          <div data-cv-list="projects">
+            <div class="proj">
+              <h3 data-cv-field="title"></h3>
+              <p data-cv-field="description"></p>
+              <div>GitHub link: <a data-cv-field="link" href="#"></a></div>
+            </div>
+          </div>
+        </section>
+        <section class="sec" style="margin-top:20px">
+          <h2>Key Achievements</h2>
+          <div data-cv-list="achievements">
+            <div class="ach">
+              <div class="badge"><i data-cv-fa="icon" class="fa-solid fa-trophy"></i></div>
+              <div>
+                <h3 data-cv-field="title"></h3>
+                <p data-cv-field="description"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+      <div class="col-r">
+        <section class="sec">
+          <h2>Summary</h2>
+          <p class="sum" data-cv="summary"></p>
+        </section>
+        <section class="sec">
+          <h2>Experience</h2>
+          <div data-cv-list="experience">
+            <div class="exp">
+              <div class="job" data-cv-field="title"></div>
+              <div class="co" data-cv-field="company"></div>
+              <div class="row2">
+                <div class="meta">
+                  <span><i class="fa-regular fa-calendar"></i> <span data-cv-field="start"></span> – <span data-cv-field="end"></span></span>
+                  <span><i class="fa-solid fa-location-dot"></i> <span data-cv-field="location"></span></span>
+                </div>
+              </div>
+              <ul data-cv-each="bullets"><li></li></ul>
+            </div>
+          </div>
+        </section>
+        <section class="sec">
+          <h2>Education</h2>
+          <div data-cv-list="education">
+            <div class="exp">
+              <div class="job" data-cv-field="degree"></div>
+              <div class="co" data-cv-field="school"></div>
+              <div class="row2">
+                <div class="meta">
+                  <span><i class="fa-regular fa-calendar"></i> <span data-cv-field="start"></span> – <span data-cv-field="end"></span></span>
+                  <span><i class="fa-solid fa-location-dot"></i> <span data-cv-field="location"></span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="foot" style="border:none;padding:16px 0 0"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+      </div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

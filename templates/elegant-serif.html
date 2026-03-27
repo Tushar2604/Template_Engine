@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Elegant Serif layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-sidebar:#1a3652;--t-accent:#2563eb;--t-muted:#6b7280;--t-accent-2:#3b82f6;--t-teal:#004d4d;--t-cyan:#00a8c5;--t-ink:#111827;}</style>
+  <style>
+    :root { --accent: var(--t-accent); --ink: var(--t-ink); --muted: var(--t-muted); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Lato, system-ui, sans-serif; background: #f5f0eb; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { width: 210mm; min-height: 297mm; margin: 12px auto; background: #fff; box-shadow: 0 8px 40px rgba(0,0,0,.08); }
+
+    /* Elegant thin top border */
+    .top-border { height: 4px; background: var(--accent); }
+
+    .head { padding: 32px 44px 20px; text-align: center; }
+    .head h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 700; color: var(--ink); letter-spacing: .06em; margin-bottom: 4px; }
+    .head .sub { font-family: Lato, sans-serif; font-size: .88rem; color: var(--accent); font-weight: 300; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+    .head .divider { width: 60px; height: 1px; background: var(--accent); margin: 0 auto 12px; }
+    .head .contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; font-size: .74rem; color: var(--muted); font-weight: 400; }
+    .head .contact span { display: inline-flex; align-items: center; gap: 6px; }
+    .head .contact i { font-size: .68rem; color: var(--accent); }
+
+    .body { padding: 20px 44px 28px; }
+    .sec { margin-bottom: 22px; }
+    .sec h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: .82rem; font-weight: 700; letter-spacing: .08em; color: var(--ink);
+      text-align: center; margin-bottom: 14px; position: relative;
+    }
+    .sec h2::before, .sec h2::after {
+      content: ''; position: absolute; top: 50%; height: 1px; background: #e5e7eb; width: 28%;
+    }
+    .sec h2::before { left: 0; }
+    .sec h2::after { right: 0; }
+
+    .summary { font-size: .82rem; line-height: 1.65; color: #374151; text-align: center; max-width: 600px; margin: 0 auto; font-weight: 300; }
+
+    .exp { margin-bottom: 18px; }
+    .exp .row1 { text-align: center; }
+    .exp .role { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 700; color: var(--ink); }
+    .exp .company { font-size: .82rem; font-weight: 700; color: var(--accent); margin-top: 2px; }
+    .exp .meta { font-size: .72rem; color: var(--muted); margin-top: 4px; text-align: center; }
+    .exp ul { margin: 8px 0 0 20px; font-size: .78rem; line-height: 1.55; color: #374151; font-weight: 300; }
+    .exp ul li { margin-bottom: 3px; }
+
+    .edu-row { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .edu { text-align: center; margin-bottom: 12px; }
+    .edu .degree { font-family: 'Playfair Display', serif; font-size: .84rem; font-weight: 700; color: var(--ink); }
+    .edu .school { font-size: .78rem; color: var(--accent); font-weight: 700; margin-top: 2px; }
+    .edu .meta { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+
+    .skills-center { text-align: center; font-size: .82rem; color: #374151; line-height: 1.6; font-weight: 300; }
+    .skills-center .sep { color: var(--accent); padding: 0 6px; font-weight: 700; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; }
+    .ach-item { text-align: center; margin-bottom: 14px; }
+    .ach-item i { color: var(--accent); font-size: 1rem; margin-bottom: 6px; display: block; }
+    .ach-item h3 { font-family: 'Playfair Display', serif; font-size: .82rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .ach-item p { font-size: .74rem; color: var(--muted); line-height: 1.4; font-weight: 300; }
+
+    .lang-center { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .lang-item { text-align: center; }
+    .lang-item .name { font-weight: 700; font-size: .8rem; color: var(--ink); display: block; margin-bottom: 4px; }
+    .lang-item .level { font-size: .72rem; color: var(--muted); font-weight: 300; }
+
+    .foot { padding: 14px 44px; display: flex; justify-content: space-between; font-size: .6rem; color: #d1d5db; border-top: 1px solid #f3f4f6; }
+    @media print { body{background:#fff;} .sheet{box-shadow:none;margin:0;} }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="top-border"></div>
+    <header class="head">
+      <h1 data-cv="fullName"></h1>
+      <div class="sub" data-cv="professionalTitle"></div>
+      <div class="divider"></div>
+      <div class="contact">
+        <span><i class="fa-regular fa-envelope"></i> <span data-cv="contact.email"></span></span>
+        <span><i class="fa-solid fa-phone"></i> <span data-cv="contact.phone"></span></span>
+        <span><i class="fa-brands fa-linkedin-in"></i> <span data-cv="contact.linkedin"></span></span>
+        <span><i class="fa-solid fa-location-dot"></i> <span data-cv="contact.location"></span></span>
+      </div>
+    </header>
+    <div class="body">
+      <section class="sec">
+        <h2>Summary</h2>
+        <p class="summary" data-cv="summary"></p>
+      </section>
+      <section class="sec">
+        <h2>Experience</h2>
+        <div data-cv-list="experience">
+          <div class="exp">
+            <div class="row1">
+              <div class="role" data-cv-field="title"></div>
+              <div class="company" data-cv-field="company"></div>
+            </div>
+            <div class="meta"><span data-cv-field="start"></span> – <span data-cv-field="end"></span> · <span data-cv-field="location"></span></div>
+            <ul data-cv-each="bullets"><li></li></ul>
+          </div>
+        </div>
+      </section>
+      <section class="sec">
+        <h2>Education</h2>
+        <div class="edu-row" data-cv-list="education">
+          <div class="edu">
+            <div class="degree" data-cv-field="degree"></div>
+            <div class="school" data-cv-field="school"></div>
+            <div class="meta"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></div>
+          </div>
+        </div>
+      </section>
+      <section class="sec">
+        <h2>Skills</h2>
+        <p class="skills-center" data-cv="skillsInline"></p>
+      </section>
+      <section class="sec">
+        <h2>Achievements</h2>
+        <div class="two-col" data-cv-list="achievements">
+          <div class="ach-item">
+            <i data-cv-fa="icon" class="fa-solid fa-star"></i>
+            <h3 data-cv-field="title"></h3>
+            <p data-cv-field="description"></p>
+          </div>
+        </div>
+      </section>
+      <section class="sec">
+        <h2>Languages</h2>
+        <div class="lang-center" data-cv-lang-list>
+          <div class="lang-item">
+            <span class="name" data-cv-field="name"></span>
+            <span class="level" data-cv-field="level"></span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="foot"><span data-cv="footerUrl"></span><span data-cv="footerBrand"></span></div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

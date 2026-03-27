@@ -1,0 +1,230 @@
+{
+  "fullName": "Jordan Smith",
+  "fullNameUpper": "JORDAN SMITH",
+  "professionalTitle": "VP Operations | Strategic Leadership | Process Optimization",
+  "professionalTitleAlt": "Senior Project Manager | Treasury & Expense Management",
+  "professionalTitleBrandon": "Senior Business Development Director | Biotech & Pharma Expertise",
+  "professionalTitleMaeve": "Strategic Sourcing Leader | Procurement Specialist | Team Management",
+  "professionalTitleMaeveUpper": "STRATEGIC SOURCING LEADER | PROCUREMENT SPECIALIST | TEAM MANAGEMENT",
+  "professionalTitleMason": "Experienced Sales Professional | B2B | Networking",
+  "professionalTitleIsabella": "Educational Leader | Curriculum Development | Innovative Teaching",
+  "professionalTitleViolet": "Sr. Software Engineer | Full-Stack Development | Cloud Solutions",
+  "fullNameElena": "Elena R. Whitaker",
+  "professionalTitleElena": "Academic Program Coordinator",
+  "contactOneLine": "Brookfield, Colorado • (970) 555-0142 • elena.whitaker@email.com",
+  "fullNameUpperEthan": "ETHAN SMITH",
+  "professionalTitleEthan": "Chief Experience Officer | Customer-Centric Strategies | Digital Transformation",
+  "fullNameUpperGrace": "GRACE JACKSON",
+  "professionalTitleGrace": "Chief Technology Officer | Tech Strategy | Innovation",
+  "skillsParagraph": "LMS (Canvas, Blackboard), Microsoft Office Suite, Data Analysis (Excel, SPSS), Academic Advising, Curriculum Mapping, Project Management, Stakeholder Communication, Budget Tracking",
+  "skillsCoreCompetencies": "Cloud Architecture, Team Leadership, Vendor Management, Security Governance, Agile Delivery, KPI Design, Stakeholder Workshops, Roadmap Planning",
+  "contact": {
+    "email": "jordan.smith@email.com",
+    "phone": "+1 (555) 234-8901",
+    "linkedin": "linkedin.com/in/jordansmith",
+    "location": "Austin, Texas",
+    "github": "github.com/jordansmith"
+  },
+  "summary": "Results-driven executive with 15+ years leading manufacturing and operations teams. Proven record of improving throughput, reducing cost, and scaling production safely while aligning cross-functional stakeholders. Known for data-backed decisions, lean implementation, and building high-trust teams.",
+  "experience": [
+    {
+      "title": "Vice President, Manufacturing",
+      "company": "Nexus Industrial Group",
+      "location": "Dallas, TX",
+      "start": "01/2019",
+      "end": "Present",
+      "bullets": [
+        "Led 400+ FTE organization across three plants; improved OEE by 18% in 24 months.",
+        "Deployed predictive maintenance program reducing unplanned downtime by 28%.",
+        "Partnered with Product and Supply Chain on NPI, cutting launch cycle time by 22%."
+      ]
+    },
+    {
+      "title": "Director of Operations",
+      "company": "Summit Fabrication Co.",
+      "location": "Houston, TX",
+      "start": "06/2014",
+      "end": "12/2018",
+      "bullets": [
+        "Standardized work instructions and layered audits; recordable incident rate down 35%.",
+        "Negotiated CAPEX roadmap of $42M with ROI payback under 3 years average."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Business Administration",
+      "school": "University of Texas at Austin",
+      "location": "Austin, TX",
+      "start": "2010",
+      "end": "2012"
+    },
+    {
+      "degree": "B.S. Industrial Engineering",
+      "school": "Texas A&M University",
+      "location": "College Station, TX",
+      "start": "2006",
+      "end": "2010"
+    }
+  ],
+  "educationDetailed": [
+    {
+      "degree": "M.Ed. Higher Education Administration",
+      "school": "University of Idaho",
+      "location": "Moscow, ID",
+      "year": "2020",
+      "coursework": [
+        "Student Development Theory",
+        "Program Assessment & Accreditation",
+        "Finance in Higher Education"
+      ]
+    },
+    {
+      "degree": "B.A. English & Communication",
+      "school": "Colorado State University",
+      "location": "Fort Collins, CO",
+      "year": "2016",
+      "coursework": [
+        "Technical Writing",
+        "Organizational Communication",
+        "Instructional Design Basics"
+      ]
+    }
+  ],
+  "projectsDetailed": [
+    {
+      "title": "Cross-Campus Orientation Portal",
+      "year": "2023",
+      "detailLines": [
+        "Description: Unified onboarding site for 4 colleges with shared SSO and resource library.",
+        "Role: Product owner — gathered requirements, prioritized backlog, trained staff.",
+        "Technologies used: React, Node.js, PostgreSQL, Canvas API.",
+        "Outcome: Cut orientation check-in time by 35% and raised survey satisfaction scores."
+      ]
+    },
+    {
+      "title": "Faculty Development Toolkit",
+      "year": "2022",
+      "detailLines": [
+        "Description: Modular toolkit of workshop decks, rubrics, and asynchronous LMS templates.",
+        "Role: Lead coordinator across CETL and departmental liaisons.",
+        "Technologies used: LMS course shells, Panopto, Qualtrics.",
+        "Outcome: Rolled out to 120+ instructors; adoption tracked via usage dashboards."
+      ]
+    }
+  ],
+  "certificationsDetailed": [
+    {
+      "title": "Certified Scrum Product Owner (CSPO)",
+      "year": "2021",
+      "bullets": [
+        "Description: Formal training in backlog refinement, stakeholder alignment, and release planning.",
+        "Skills Developed: User story mapping, acceptance criteria, roadmap communication."
+      ]
+    },
+    {
+      "title": "ATI Online Teaching Certificate",
+      "year": "2020",
+      "bullets": [
+        "Description: Evidence-based course design and accessibility remediation for hybrid courses.",
+        "Skills Developed: Rubric design, UDL checkpoints, peer review facilitation."
+      ]
+    }
+  ],
+  "skills": [
+    "Lean / Six Sigma",
+    "Operations Strategy",
+    "CapEx Planning",
+    "ERP (SAP)",
+    "ERP (Oracle)",
+    "Supplier Management",
+    "Change Management",
+    "KPI Dashboards",
+    "Safety Systems",
+    "Team Leadership"
+  ],
+  "skillsInline": "Lean / Six Sigma • Operations Strategy • CapEx Planning • ERP (SAP) • Supplier Management • KPI Dashboards",
+  "languages": [
+    { "name": "English", "level": "Native", "filled": 5 },
+    { "name": "Spanish", "level": "Advanced", "filled": 4 },
+    { "name": "French", "level": "Intermediate", "filled": 3 }
+  ],
+  "achievements": [
+    {
+      "icon": "trophy",
+      "title": "20% Production Efficiency Increase",
+      "description": "Redesigned line balancing and SMED across flagship plant within one fiscal year."
+    },
+    {
+      "icon": "bulb",
+      "title": "$8.5M Annual Savings",
+      "description": "Consolidated suppliers and renegotiated contracts with category strategy."
+    },
+    {
+      "icon": "star",
+      "title": "Plant of the Year",
+      "description": "Awarded corporate excellence for safety, quality, and delivery in 2023."
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Certified Black Belt – Six Sigma",
+      "description": "ASQ; DMAIC projects across yield and cycle time."
+    },
+    {
+      "title": "PMP",
+      "description": "PMI; portfolio governance for multi-site initiatives."
+    }
+  ],
+  "courses": [
+    {
+      "title": "Certified Professional in Supply Management",
+      "description": "ISM – advanced sourcing, contracting, and category analytics."
+    },
+    {
+      "title": "Executive Leadership Program",
+      "description": "Leading transformation and stakeholder alignment at scale."
+    }
+  ],
+  "interests": [
+    {
+      "title": "CX community talks",
+      "description": "Regular attendee at regional CX roundtables; occasional lightning-talk speaker."
+    },
+    {
+      "title": "Cycling & endurance",
+      "description": "Weekend long rides — brings planning discipline and recovery mindset to leadership."
+    }
+  ],
+  "passions": [
+    {
+      "icon": "flag",
+      "title": "Mentoring operators",
+      "description": "Volunteer coach for frontline leadership cohorts."
+    },
+    {
+      "icon": "mountain",
+      "title": "Endurance sports",
+      "description": "Applies discipline and pacing from long-distance training to work."
+    }
+  ],
+  "quote": {
+    "text": "Excellence is never an accident; it is the result of high intention and effort.",
+    "author": "Aristotle"
+  },
+  "projects": [
+    {
+      "title": "Throughput Analytics Platform",
+      "description": "Internal React dashboard for plant KPIs and bottleneck detection.",
+      "link": "https://github.com/example/throughput-ui"
+    },
+    {
+      "title": "Supplier Scorecard API",
+      "description": "Node service integrating ERP and vendor quality data.",
+      "link": "https://github.com/example/scorecard-api"
+    }
+  ],
+  "photoUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces",
+  "footerUrl": "www.yourplatform.com",
+  "footerBrand": "Template Engine"
+}
