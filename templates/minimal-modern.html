@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Minimal Modern</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#475569;--t-accent:#475569;--t-muted:#64748b;--t-text:#0f172a;--t-sidebar:#1e293b;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Inter,system-ui,sans-serif;background:#f1f5f9;color:#0f172a;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:32px 36px 28px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
+    .header{padding-bottom:16px;margin-bottom:20px;border-bottom:3px solid var(--primary);}
+    h1{font-size:1.9rem;font-weight:700;color:var(--text);margin-bottom:4px;letter-spacing:-.01em;}
+    .pro-title{font-size:.9rem;font-weight:500;color:var(--primary);margin-bottom:10px;}
+    .contact-row{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.74rem;color:var(--muted);}
+    .sec{margin-bottom:18px;}
+    .sec h2{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--primary);padding-bottom:6px;border-bottom:1px solid #e2e8f0;margin-bottom:11px;}
+    .summary{font-size:.8rem;line-height:1.6;color:#334155;}
+    .exp{margin-bottom:14px;}
+    .r1,.r2{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.8rem;}
+    .r1{font-weight:700;color:var(--text);}
+    .r1 .dates{font-weight:400;color:var(--muted);font-size:.74rem;}
+    .r2{margin-top:2px;}
+    .r2 .company{font-weight:600;color:var(--accent);}
+    .r2 .loc{color:var(--muted);font-size:.74rem;}
+    .exp ul{margin:6px 0 0 16px;font-size:.77rem;line-height:1.5;color:#334155;}
+    .pills-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+    .pill{font-size:.73rem;font-weight:500;padding:4px 10px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:20px;color:#334155;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <h1 data-cv="fullName">Jordan Smith</h1>
+      <p class="pro-title" data-cv="professionalTitle"></p>
+      <div class="contact-row">
+        <span data-cv="contact.email"></span>
+        <span data-cv="contact.phone"></span>
+        <span data-cv="contact.linkedin"></span>
+        <span data-cv="contact.location"></span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Summary</h2>
+      <p class="summary" data-cv="summary"></p>
+    </div>
+    <div class="sec">
+      <h2>Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span class="company" data-cv-field="company"></span><span class="loc" data-cv-field="location"></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span class="company" data-cv-field="school"></span><span class="loc" data-cv-field="location"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Skills</h2>
+      <div class="pills-wrap" data-cv-pills data-pill-class="pill"></div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

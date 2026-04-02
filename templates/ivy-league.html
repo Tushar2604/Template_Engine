@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Ivy League Academic</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#475569;--t-accent:#475569;--t-muted:#64748b;--t-text:#0f172a;--t-sidebar:#1e293b;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'EB Garamond','Georgia',serif;background:#f5f5f0;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:38px 42px 32px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
+    .header{text-align:center;margin-bottom:24px;}
+    h1{font-size:2rem;font-weight:700;letter-spacing:.05em;margin-bottom:5px;color:var(--text);}
+    .pro-title{font-size:.9rem;font-weight:500;color:var(--muted);font-style:italic;margin-bottom:10px;}
+    .rule{border:none;border-top:2px solid var(--primary);margin:10px 0;}
+    .contact-line{font-size:.73rem;color:var(--muted);text-align:center;font-family:Inter,sans-serif;}
+    .sec{margin-bottom:18px;}
+    .sec h2{font-size:.75rem;font-family:Inter,sans-serif;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #e2e8f0;}
+    .summary{font-size:.81rem;line-height:1.65;color:#334155;}
+    .exp{margin-bottom:14px;}
+    .r1{display:flex;justify-content:space-between;font-size:.81rem;font-weight:700;color:var(--text);}
+    .r1 .dates{font-weight:400;font-style:italic;color:var(--muted);font-size:.76rem;}
+    .r2{font-size:.77rem;margin-top:2px;color:var(--primary);font-style:italic;}
+    .exp ul{margin:6px 0 0 18px;font-size:.78rem;line-height:1.5;color:#334155;}
+    .skills-inline{font-size:.79rem;color:#334155;line-height:1.7;font-style:italic;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <h1 data-cv="fullName">Jordan Smith</h1>
+      <p class="pro-title" data-cv="professionalTitle"></p>
+      <hr class="rule" />
+      <p class="contact-line">
+        <span data-cv="contact.email"></span> &nbsp;|&nbsp;
+        <span data-cv="contact.phone"></span> &nbsp;|&nbsp;
+        <span data-cv="contact.location"></span> &nbsp;|&nbsp;
+        <span data-cv="contact.linkedin"></span>
+      </p>
+      <hr class="rule" style="margin-top:10px" />
+    </div>
+    <div class="sec">
+      <h2>Profile</h2>
+      <p class="summary" data-cv="summary"></p>
+    </div>
+    <div class="sec">
+      <h2>Academic & Professional Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span data-cv-field="company"></span>, <span data-cv-field="location"></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span data-cv-field="school"></span>, <span data-cv-field="location"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Skills &amp; Expertise</h2>
+      <p class="skills-inline" data-cv="skillsInline"></p>
+    </div>
+    <div class="sec">
+      <h2>Certifications</h2>
+      <div data-cv-list="certifications">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="title"></span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic" data-cv-field="description"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

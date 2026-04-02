@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Paris Chic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#9333ea;--t-accent:#c084fc;--t-muted:#71717a;--t-text:#1e1b4b;--t-sidebar:#581c87;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Cormorant Garamond','Georgia',serif;background:#faf5ff;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:40px 46px 34px;box-shadow:0 8px 40px rgba(0,0,0,.08);}
+    .header{text-align:center;margin-bottom:28px;}
+    h1{font-size:2.4rem;font-weight:700;letter-spacing:.06em;color:var(--text);margin-bottom:5px;}
+    .pro-title{font-size:1rem;font-weight:400;font-style:italic;color:var(--primary);margin-bottom:12px;letter-spacing:.04em;}
+    .line{width:60px;height:1px;background:var(--primary);margin:0 auto 10px;}
+    .contact-row{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 20px;font-family:Inter,sans-serif;font-size:.7rem;color:var(--muted);letter-spacing:.04em;}
+    .sec{margin-bottom:20px;}
+    .sec h2{font-family:Inter,sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary);text-align:center;padding-bottom:8px;border-bottom:1px solid #f3e8ff;margin-bottom:12px;}
+    .summary{font-size:.9rem;line-height:1.7;color:#374151;text-align:center;font-style:italic;}
+    .exp{margin-bottom:16px;text-align:center;}
+    .exp-title{font-size:.92rem;font-weight:600;color:var(--text);}
+    .exp-co{font-size:.8rem;font-style:italic;color:var(--primary);margin:2px 0;}
+    .exp-dates{font-family:Inter,sans-serif;font-size:.68rem;color:var(--muted);letter-spacing:.04em;margin-bottom:6px;}
+    .exp ul{list-style:none;font-size:.82rem;line-height:1.6;color:#4b5563;text-align:left;margin:0 auto;display:table;}
+    .exp ul li::before{content:"· ";}
+    .inline{font-size:.82rem;color:#4b5563;line-height:1.7;text-align:center;font-style:italic;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <h1 data-cv="fullName">Jordan Smith</h1>
+      <p class="pro-title" data-cv="professionalTitle"></p>
+      <div class="line"></div>
+      <div class="contact-row">
+        <span data-cv="contact.email"></span>
+        <span data-cv="contact.phone"></span>
+        <span data-cv="contact.location"></span>
+        <span data-cv="contact.linkedin"></span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Profile</h2>
+      <p class="summary" data-cv="summary"></p>
+    </div>
+    <div class="sec">
+      <h2>Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="exp-title" data-cv-field="title"></div>
+          <div class="exp-co"><span data-cv-field="company"></span>, <span data-cv-field="location"></span></div>
+          <div class="exp-dates"><span data-cv-field="start"></span> — <span data-cv-field="end"></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="exp-title" data-cv-field="degree"></div>
+          <div class="exp-co" data-cv-field="school"></div>
+          <div class="exp-dates"><span data-cv-field="start"></span> — <span data-cv-field="end"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Expertise</h2>
+      <p class="inline" data-cv="skillsInline"></p>
+    </div>
+    <div class="sec">
+      <h2>Certifications</h2>
+      <div data-cv-list="certifications">
+        <div class="exp">
+          <div class="exp-title" data-cv-field="title"></div>
+          <div style="font-size:.78rem;font-style:italic;color:var(--muted)" data-cv-field="description"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

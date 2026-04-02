@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Bookkeeper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#16a34a;--t-accent:#16a34a;--t-muted:#6b7280;--t-text:#052e16;--t-sidebar:#14532d;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Lato,system-ui,sans-serif;background:#f0f0f0;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;box-shadow:0 8px 40px rgba(0,0,0,.12);}
+    /* Top accent bar */
+    .topbar{height:6px;background:var(--primary);}
+    .header{padding:20px 30px 14px;}
+    h1{font-family:Lato,sans-serif;font-size:1.7rem;font-weight:900;color:var(--text);margin-bottom:2px;letter-spacing:.01em;}
+    .contact-line{font-size:.73rem;color:var(--muted);line-height:1.6;margin-bottom:4px;}
+    .body{padding:0 30px 22px;}
+    .sec{margin-bottom:20px;}
+    .sec h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--primary);padding-bottom:5px;border-bottom:1px solid #d1fae5;margin-bottom:12px;letter-spacing:.01em;}
+    .summary{font-size:.79rem;line-height:1.65;color:#374151;}
+    .exp{margin-bottom:16px;}
+    .exp-co{font-size:.81rem;font-weight:700;color:var(--primary);}
+    .exp-dates{font-size:.73rem;color:var(--muted);margin-bottom:2px;font-style:italic;}
+    .exp ul{margin:5px 0 0 16px;font-size:.77rem;line-height:1.5;color:#374151;}
+    .edu-row{display:flex;justify-content:space-between;margin-bottom:8px;}
+    .edu-name{font-size:.8rem;font-weight:700;color:var(--text);}
+    .edu-date{font-size:.74rem;color:var(--muted);}
+    .edu-sub{font-size:.76rem;color:var(--muted);}
+    .page-num{text-align:right;font-size:.68rem;color:#9ca3af;padding-top:10px;border-top:1px solid #f0f0f0;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="topbar"></div>
+    <div class="header">
+      <h1 data-cv="fullName">Jordan Smith</h1>
+      <div class="contact-line">
+        <span data-cv="contact.email"></span> &nbsp;•&nbsp;
+        <span data-cv="contact.phone"></span> &nbsp;•&nbsp;
+        <span data-cv="contact.location"></span>
+      </div>
+      <div style="font-size:.83rem;font-weight:700;color:#374151" data-cv="professionalTitle"></div>
+    </div>
+    <div class="body">
+      <div class="sec">
+        <h2>Summary</h2>
+        <p class="summary" data-cv="summary"></p>
+      </div>
+      <div class="sec">
+        <h2>Career Experience</h2>
+        <div data-cv-list="experience">
+          <div class="exp">
+            <div class="exp-co"><span data-cv-field="title"></span> at <span data-cv-field="company"></span>, <span data-cv-field="location"></span></div>
+            <div class="exp-dates"><span data-cv-field="start"></span> — <span data-cv-field="end"></span></div>
+            <ul data-cv-each="bullets"><li></li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <h2>Education</h2>
+        <div data-cv-list="education">
+          <div style="margin-bottom:10px;">
+            <div class="edu-row">
+              <div class="edu-name"><span data-cv-field="degree"></span>, <span data-cv-field="school"></span></div>
+              <div class="edu-date"><span data-cv-field="start"></span> — <span data-cv-field="end"></span></div>
+            </div>
+            <div class="edu-sub" data-cv-field="location"></div>
+          </div>
+        </div>
+      </div>
+      <div class="page-num">Page 1</div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

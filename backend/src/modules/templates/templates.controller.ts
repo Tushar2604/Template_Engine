@@ -16,20 +16,11 @@ export class TemplatesController {
   }
 
   @Get('bulk')
-  @ApiOperation({ summary: 'Generate bulk template variants (layouts × palettes × fonts × spacing)' })
-  @ApiQuery({ name: 'palettes', required: false, description: 'Comma-separated palette ids' })
-  @ApiQuery({ name: 'fonts', required: false, description: 'Comma-separated font ids' })
-  @ApiQuery({ name: 'spacing', required: false, description: 'Comma-separated spacing options (compact,normal,spacious)' })
-  generateBulk(
-    @Query('palettes') palettes?: string,
-    @Query('fonts') fonts?: string,
-    @Query('spacing') spacing?: string,
-  ) {
-    const result = this.svc.generateBulk({
-      paletteIds: palettes?.split(',').map((s) => s.trim()),
-      fontIds: fonts?.split(',').map((s) => s.trim()),
-      spacingOptions: spacing?.split(',').map((s) => s.trim()) as ('compact' | 'normal' | 'spacious')[] | undefined,
-    });
+  @ApiOperation({ summary: 'Generate 100+ structurally distinct composed templates (shell × zones × type scale × presentation)' })
+  @ApiQuery({ name: 'count', required: false, description: 'Target count (100–300)' })
+  generateBulk(@Query('count') count?: string) {
+    const n = count ? parseInt(count, 10) : 120;
+    const result = this.svc.generateBulk({ targetCount: Number.isFinite(n) ? n : 120 });
     return { count: result.length, templates: result };
   }
 

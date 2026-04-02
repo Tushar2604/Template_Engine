@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { composeBulkFromBases } from './bulk-composition';
 
 /* ── Shared types (mirrored from frontend engine) ──────── */
 export interface TemplateColors {
@@ -7,7 +8,16 @@ export interface TemplateColors {
 }
 
 export interface TemplateSchema {
-  id: string; name: string; category?: string;
+  id: string;
+  baseId?: string;
+  name: string;
+  category?: string;
+  family?: string;
+  styleTags?: string[];
+  layoutSignature?: string;
+  configHash?: string;
+  atsSafe?: boolean;
+  presentation?: Record<string, unknown>;
   layout: 'single-column' | 'two-column-left' | 'two-column-right';
   zones: Record<string, string[]>;
   style: {
@@ -150,39 +160,17 @@ export class TemplatesService {
   }
 
   /**
-   * Bulk generate schemas by combining base templates with palette/font/spacing overrides.
+   * Multi-family composition: structural variants (zones, typography, presentation),
+   * deduped without palette-only clones. Mirrors frontend bulk engine.
    */
-  generateBulk(options?: {
-    paletteIds?: string[];
-    fontIds?: string[];
-    spacingOptions?: ('compact' | 'normal' | 'spacious')[];
-  }): TemplateSchema[] {
-    const palettes = options?.paletteIds || Object.keys(PALETTES);
-    const fonts = options?.fontIds || Object.keys(FONTS);
-    const spacings = options?.spacingOptions || ['compact', 'normal', 'spacious'];
-    const results: TemplateSchema[] = [];
-
-    for (const base of BASE_TEMPLATES) {
-      for (const paletteKey of palettes) {
-        for (const fontKey of fonts) {
-          for (const spacing of spacings) {
-            const id = `${base.id}-${paletteKey}-${fontKey}-${spacing}`;
-            results.push({
-              ...base,
-              id,
-              name: `${base.name} • ${paletteKey} • ${fontKey} • ${spacing}`,
-              style: {
-                ...base.style,
-                fontFamily: FONTS[fontKey] || FONTS.inter,
-                fontSize: FONT_SIZES[spacing],
-                colors: PALETTES[paletteKey] || PALETTES.horizon,
-                spacing,
-              },
-            });
-          }
-        }
-      }
-    }
-    return results;
+  generateBulk(options?: { targetCount?: number }): TemplateSchema[] {
+    const target = Math.min(300, Math.max(100, options?.targetCount ?? 120));
+    return composeBulkFromBases(
+      BASE_TEMPLATES as unknown as import('./bulk-composition').BulkTemplateSchema[],
+      PALETTES,
+      FONTS,
+      FONT_SIZES,
+      target,
+    ) as TemplateSchema[];
   }
 }

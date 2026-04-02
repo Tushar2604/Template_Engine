@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Math Teacher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style id="cv-bulk-theme">:root{--t-primary:#059669;--t-accent:#059669;--t-muted:#6b7280;--t-text:#022c22;--t-sidebar:#064e3b;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);--sidebar:var(--t-sidebar);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Lato,system-ui,sans-serif;background:#e2e8f0;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;display:flex;box-shadow:0 8px 40px rgba(0,0,0,.12);}
+    /* Left main content */
+    .main{flex:1;padding:28px 26px 22px;}
+    .main h1{font-size:1.75rem;font-weight:900;color:var(--text);margin-bottom:4px;letter-spacing:-.01em;}
+    .pro-title{font-size:.9rem;font-weight:700;color:var(--primary);margin-bottom:14px;}
+    .sec{margin-bottom:18px;}
+    .sec h2{font-size:.8rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:var(--primary);padding-bottom:6px;border-bottom:2px solid var(--primary);margin-bottom:11px;}
+    .summary{font-size:.79rem;line-height:1.6;color:#374151;}
+    .exp{margin-bottom:16px;}
+    .exp-header{margin-bottom:4px;}
+    .exp-co{font-size:.82rem;font-weight:700;color:var(--text);}
+    .exp-loc{font-size:.77rem;color:var(--accent);font-weight:700;}
+    .exp-dates{font-size:.74rem;color:var(--muted);margin-bottom:5px;}
+    .exp ul{margin:0 0 0 16px;font-size:.77rem;line-height:1.5;color:#374151;}
+    .edu-school{font-size:.82rem;font-weight:700;color:var(--text);}
+    .edu-field{font-size:.77rem;color:var(--muted);}
+    .edu-dates{font-size:.74rem;color:var(--muted);}
+    /* Right sidebar */
+    .sidebar{width:34%;background:#f0fdf4;padding:28px 18px 22px;border-left:3px solid var(--primary);}
+    .sb-sec{margin-bottom:18px;}
+    .sb-sec h2{font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sidebar);padding-bottom:6px;border-bottom:1px solid #d1fae5;margin-bottom:10px;}
+    .contact-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:.73rem;color:#374151;line-height:1.45;}
+    .contact-item i{color:var(--primary);width:12px;flex-shrink:0;margin-top:2px;}
+    .skills-wrap{display:flex;flex-direction:column;gap:4px;}
+    .skill-item{font-size:.74rem;color:#374151;padding:3px 0;border-bottom:1px solid #d1fae5;}
+    .lang-row{display:flex;justify-content:space-between;margin-bottom:9px;font-size:.74rem;}
+    .bars{display:flex;gap:3px;}
+    .bars span{width:14px;height:7px;border-radius:2px;background:#d1fae5;}
+    .bars span.on{background:var(--primary);}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="main">
+      <h1 data-cv="fullName">Jordan Smith</h1>
+      <p class="pro-title" data-cv="professionalTitle"></p>
+      <div class="sec">
+        <h2>Profile</h2>
+        <p class="summary" data-cv="summary"></p>
+      </div>
+      <div class="sec">
+        <h2>Employment History</h2>
+        <div data-cv-list="experience">
+          <div class="exp">
+            <div class="exp-header">
+              <div class="exp-co"><span data-cv-field="title"></span> at <span data-cv-field="company"></span></div>
+              <div class="exp-loc" data-cv-field="location"></div>
+              <div class="exp-dates"><span data-cv-field="start"></span> — <span data-cv-field="end"></span></div>
+            </div>
+            <ul data-cv-each="bullets"><li></li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <h2>Education</h2>
+        <div data-cv-list="education">
+          <div class="exp">
+            <div class="edu-school" data-cv-field="school"></div>
+            <div class="edu-field" data-cv-field="degree"></div>
+            <div class="edu-dates"><span data-cv-field="start"></span> — <span data-cv-field="end"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <div class="sb-sec">
+        <h2>Address</h2>
+        <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span data-cv="contact.location"></span></div>
+        <div class="contact-item"><i class="fa-regular fa-envelope"></i><span data-cv="contact.email"></span></div>
+        <div class="contact-item"><i class="fa-solid fa-phone"></i><span data-cv="contact.phone"></span></div>
+      </div>
+      <div class="sb-sec">
+        <h2>Skills</h2>
+        <div class="skills-wrap" data-cv-skill-cells data-skill-max="14" data-skill-class="skill-item"></div>
+      </div>
+      <div class="sb-sec">
+        <h2>Languages</h2>
+        <div data-cv-lang-list>
+          <div class="lang-row">
+            <div><strong data-cv-field="name"></strong></div>
+            <div class="bars" data-bar-fill></div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-sec">
+        <h2>Links</h2>
+        <div class="contact-item"><i class="fa-brands fa-linkedin-in"></i><span data-cv="contact.linkedin"></span></div>
+      </div>
+    </aside>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

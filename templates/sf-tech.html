@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — SF Tech</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#4f46e5;--t-accent:#818cf8;--t-muted:#6b7280;--t-text:#0f172a;--t-sidebar:#312e81;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Inter,system-ui,sans-serif;background:#eef2ff;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:28px 32px 24px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
+    .header{border-left:4px solid var(--primary);padding-left:16px;margin-bottom:20px;}
+    h1{font-size:1.7rem;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:2px;}
+    .pro-title{font-size:.85rem;font-weight:600;color:var(--primary);margin-bottom:6px;}
+    .contact-row{display:flex;flex-wrap:wrap;gap:5px 14px;font-size:.71rem;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+    .sec{margin-bottom:17px;}
+    .sec h2{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--primary);padding-bottom:5px;border-bottom:1px solid #e0e7ff;margin-bottom:10px;}
+    .summary{font-size:.79rem;line-height:1.6;color:#374151;}
+    .exp{margin-bottom:13px;}
+    .r1{display:flex;justify-content:space-between;font-size:.8rem;font-weight:700;color:var(--text);}
+    .r1 .dates{font-family:'JetBrains Mono',monospace;font-size:.69rem;font-weight:400;color:var(--muted);}
+    .r2{font-size:.75rem;margin-top:2px;color:var(--accent);font-weight:600;}
+    .exp ul{margin:5px 0 0 15px;font-size:.76rem;line-height:1.45;color:#374151;}
+    .chip-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+    .chip{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:3px 10px;background:#eef2ff;border:1px solid #c7d2fe;border-radius:4px;color:#4338ca;font-weight:500;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <h1 data-cv="fullName">Jordan Smith</h1>
+      <p class="pro-title" data-cv="professionalTitle"></p>
+      <div class="contact-row">
+        <span data-cv="contact.email"></span>
+        <span data-cv="contact.phone"></span>
+        <span data-cv="contact.linkedin"></span>
+        <span data-cv="contact.location"></span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>About</h2>
+      <p class="summary" data-cv="summary"></p>
+    </div>
+    <div class="sec">
+      <h2>Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span data-cv-field="company"></span> · <span data-cv-field="location"></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span data-cv-field="school"></span> · <span data-cv-field="location"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Tech Stack &amp; Skills</h2>
+      <div class="chip-wrap" data-cv-pills data-pill-class="chip"></div>
+    </div>
+    <div class="sec">
+      <h2>Projects</h2>
+      <div data-cv-list="projects">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="title"></span></div>
+          <div style="font-size:.76rem;color:#374151;margin-top:3px" data-cv-field="description"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

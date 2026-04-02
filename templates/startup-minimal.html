@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Startup Minimal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#475569;--t-accent:#475569;--t-muted:#94a3b8;--t-text:#1e293b;--t-sidebar:#1e293b;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:32px 36px 28px;box-shadow:0 4px 24px rgba(0,0,0,.08);}
+    .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #f1f5f9;}
+    h1{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:3px;}
+    .pro-title{font-size:.82rem;font-weight:500;color:var(--primary);}
+    .contact-block{text-align:right;font-size:.72rem;color:var(--muted);line-height:1.8;}
+    .sec{margin-bottom:20px;}
+    .sec h2{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+    .summary{font-size:.8rem;line-height:1.65;color:#475569;}
+    .exp{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #f1f5f9;}
+    .exp:last-child{border-bottom:none;}
+    .r1{display:flex;justify-content:space-between;align-items:baseline;font-size:.81rem;}
+    .r1 .title{font-weight:700;color:var(--text);}
+    .r1 .dates{font-size:.72rem;color:var(--muted);}
+    .r2{font-size:.75rem;color:var(--primary);margin-top:2px;font-weight:500;}
+    .exp ul{margin:6px 0 0 0;list-style:none;font-size:.77rem;line-height:1.5;color:#475569;}
+    .exp ul li::before{content:"→ ";color:var(--primary);}
+    .tags-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+    .tag{font-size:.71rem;padding:4px 10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;color:#475569;font-weight:500;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <div>
+        <h1 data-cv="fullName">Jordan Smith</h1>
+        <p class="pro-title" data-cv="professionalTitle"></p>
+      </div>
+      <div class="contact-block">
+        <div data-cv="contact.email"></div>
+        <div data-cv="contact.phone"></div>
+        <div data-cv="contact.linkedin"></div>
+        <div data-cv="contact.location"></div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>About</h2>
+      <p class="summary" data-cv="summary"></p>
+    </div>
+    <div class="sec">
+      <h2>Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="r1"><span class="title" data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span data-cv-field="company"></span> &nbsp;·&nbsp; <span data-cv-field="location"></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="r1"><span class="title" data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span data-cv-field="school"></span> &nbsp;·&nbsp; <span data-cv-field="location"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Skills</h2>
+      <div class="tags-wrap" data-cv-pills data-pill-class="tag"></div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Toronto Clean</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#0284c7;--t-accent:#0284c7;--t-muted:#64748b;--t-text:#0f172a;--t-sidebar:#0c4a6e;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',Inter,system-ui,sans-serif;background:#f1f5f9;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:32px 36px 28px;box-shadow:0 8px 40px rgba(0,0,0,.08);}
+    .header{margin-bottom:22px;}
+    h1{font-size:2rem;font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:3px;}
+    .accent-line{height:3px;width:48px;background:var(--primary);border-radius:2px;margin-bottom:8px;}
+    .pro-title{font-size:.88rem;font-weight:500;color:var(--primary);margin-bottom:8px;}
+    .contact-row{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.73rem;color:var(--muted);}
+    .sec{margin-bottom:18px;}
+    .sec h2{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text);padding-bottom:7px;border-bottom:2px solid #e2e8f0;margin-bottom:11px;}
+    .sec h2 span.accent{color:var(--primary);}
+    .summary{font-size:.8rem;line-height:1.65;color:#374151;}
+    .exp{margin-bottom:15px;}
+    .r1{display:flex;justify-content:space-between;align-items:baseline;font-size:.81rem;}
+    .r1 .job{font-weight:700;color:var(--text);}
+    .r1 .dates{font-size:.73rem;color:var(--muted);}
+    .r2{font-size:.77rem;margin-top:2px;}
+    .r2 .company{font-weight:600;color:var(--primary);}
+    .r2 .loc{color:var(--muted);}
+    .exp ul{margin:6px 0 0 15px;font-size:.77rem;line-height:1.5;color:#374151;}
+    .pills{display:flex;flex-wrap:wrap;gap:6px;}
+    .pill{font-size:.71rem;padding:4px 10px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:20px;color:#0369a1;font-weight:500;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <h1 data-cv="fullName">Jordan Smith</h1>
+      <div class="accent-line"></div>
+      <p class="pro-title" data-cv="professionalTitle"></p>
+      <div class="contact-row">
+        <span data-cv="contact.email"></span>
+        <span data-cv="contact.phone"></span>
+        <span data-cv="contact.linkedin"></span>
+        <span data-cv="contact.location"></span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Summary</h2>
+      <p class="summary" data-cv="summary"></p>
+    </div>
+    <div class="sec">
+      <h2>Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="r1"><span class="job" data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span class="company" data-cv-field="company"></span> &nbsp;·&nbsp; <span class="loc" data-cv-field="location"></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="r1"><span class="job" data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span class="company" data-cv-field="school"></span> &nbsp;·&nbsp; <span class="loc" data-cv-field="location"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Skills</h2>
+      <div class="pills" data-cv-pills data-pill-class="pill"></div>
+    </div>
+    <div class="sec">
+      <h2>Certifications</h2>
+      <div data-cv-list="certifications">
+        <div class="exp">
+          <div class="r1"><span class="job" data-cv-field="title"></span></div>
+          <div style="font-size:.73rem;color:var(--muted)" data-cv-field="description"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

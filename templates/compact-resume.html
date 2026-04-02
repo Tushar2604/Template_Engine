@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Compact Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#475569;--t-accent:#475569;--t-muted:#64748b;--t-text:#0f172a;--t-sidebar:#1e293b;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Inter,system-ui,sans-serif;background:#f1f5f9;color:#0f172a;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:26px 32px 24px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
+    .header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--primary);padding-bottom:12px;margin-bottom:16px;gap:16px;}
+    .header-left h1{font-size:1.6rem;font-weight:700;color:#0f172a;margin-bottom:3px;}
+    .header-left .pro-title{font-size:.82rem;font-weight:600;color:var(--primary);}
+    .header-right{font-size:.72rem;color:var(--muted);text-align:right;line-height:1.7;}
+    .sec{margin-bottom:15px;}
+    .sec h2{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--primary);padding-bottom:5px;border-bottom:1px solid #e2e8f0;margin-bottom:9px;}
+    .summary{font-size:.78rem;line-height:1.55;color:#334155;}
+    .exp{margin-bottom:12px;}
+    .r1{display:flex;justify-content:space-between;font-size:.79rem;font-weight:700;color:#0f172a;}
+    .r1 .dates{font-weight:400;color:var(--muted);font-size:.74rem;}
+    .r2{display:flex;justify-content:space-between;font-size:.76rem;margin-top:2px;}
+    .r2 .company{font-weight:600;color:var(--accent);}
+    .r2 .loc{color:var(--muted);}
+    .exp ul{margin:5px 0 0 16px;font-size:.75rem;line-height:1.45;color:#334155;}
+    .inline{font-size:.77rem;color:#334155;line-height:1.6;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <div class="header-left">
+        <h1 data-cv="fullName">Jordan Smith</h1>
+        <p class="pro-title" data-cv="professionalTitle"></p>
+      </div>
+      <div class="header-right">
+        <div data-cv="contact.email"></div>
+        <div data-cv="contact.phone"></div>
+        <div data-cv="contact.linkedin"></div>
+        <div data-cv="contact.location"></div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Summary</h2>
+      <p class="summary" data-cv="summary"></p>
+    </div>
+    <div class="sec">
+      <h2>Experience</h2>
+      <div data-cv-list="experience">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span class="company" data-cv-field="company"></span><span class="loc" data-cv-field="location"></span></div>
+          <ul data-cv-each="bullets"><li></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div data-cv-list="education">
+        <div class="exp">
+          <div class="r1"><span data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+          <div class="r2"><span class="company" data-cv-field="school"></span><span class="loc" data-cv-field="location"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Skills</h2>
+      <p class="inline" data-cv="skillsInline"></p>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>

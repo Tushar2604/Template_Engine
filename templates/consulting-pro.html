@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Consulting Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style id="cv-bulk-theme">:root{--t-primary:#2563eb;--t-accent:#3b82f6;--t-muted:#6b7280;--t-text:#111827;--t-sidebar:#1e3a5f;}</style>
+  <style>
+    :root{--primary:var(--t-primary);--accent:var(--t-accent);--muted:var(--t-muted);--text:var(--t-text);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Inter,system-ui,sans-serif;background:#e2e8f0;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{width:210mm;min-height:297mm;margin:12px auto;background:#fff;box-shadow:0 8px 40px rgba(0,0,0,.12);}
+    /* Split header */
+    .header{display:grid;grid-template-columns:1fr 1fr;border-bottom:4px solid var(--primary);padding:18px 26px;}
+    .hdr-left h1{font-size:1.7rem;font-weight:800;color:var(--text);margin-bottom:3px;}
+    .hdr-left .pro-title{font-size:.84rem;font-weight:600;color:var(--primary);}
+    .hdr-right{text-align:right;font-size:.73rem;color:var(--muted);line-height:1.75;display:flex;flex-direction:column;justify-content:center;}
+    /* Two col body */
+    .cols{display:flex;}
+    .main{flex:1;padding:20px 24px 18px;}
+    .aside{width:34%;padding:20px 18px 18px;background:#f8fafc;border-left:1px solid #e2e8f0;}
+    .sec{margin-bottom:17px;}
+    .sec h2{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--primary);border-bottom:2px solid var(--primary);padding-bottom:5px;margin-bottom:10px;}
+    .as-sec{margin-bottom:17px;}
+    .as-sec h2{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#374151;padding-bottom:5px;border-bottom:1px solid #e2e8f0;margin-bottom:10px;}
+    .summary{font-size:.79rem;line-height:1.6;color:#374151;}
+    .exp{margin-bottom:13px;}
+    .r1{display:flex;justify-content:space-between;font-size:.8rem;font-weight:700;color:var(--text);}
+    .r1 .dates{font-weight:500;color:var(--muted);font-size:.73rem;}
+    .r2{font-size:.76rem;margin-top:2px;}
+    .r2 .company{font-weight:600;color:var(--accent);}
+    .r2 .loc{color:var(--muted);}
+    .exp ul{margin:5px 0 0 15px;font-size:.76rem;line-height:1.45;color:#374155;}
+    .bullet-kpi{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+    .kpi{font-size:.7rem;font-weight:700;background:var(--primary);color:#fff;padding:3px 10px;border-radius:4px;}
+    .pill{font-size:.71rem;padding:4px 9px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:16px;color:#1d4ed8;font-weight:500;}
+    .pills-wrap{display:flex;flex-wrap:wrap;gap:5px;}
+    .ach{margin-bottom:10px;}
+    .ach h3{font-size:.76rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+    .ach p{font-size:.72rem;color:var(--muted);line-height:1.35;}
+    @media print{body{background:#fff;}.sheet{box-shadow:none;margin:0;width:100%;min-height:auto;}}
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <div class="hdr-left">
+        <h1 data-cv="fullName">Jordan Smith</h1>
+        <p class="pro-title" data-cv="professionalTitle"></p>
+      </div>
+      <div class="hdr-right">
+        <div data-cv="contact.email"></div>
+        <div data-cv="contact.phone"></div>
+        <div data-cv="contact.linkedin"></div>
+        <div data-cv="contact.location"></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="main">
+        <div class="sec">
+          <h2>Executive Summary</h2>
+          <p class="summary" data-cv="summary"></p>
+        </div>
+        <div class="sec">
+          <h2>Experience</h2>
+          <div data-cv-list="experience">
+            <div class="exp">
+              <div class="r1"><span data-cv-field="title"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+              <div class="r2"><span class="company" data-cv-field="company"></span> &nbsp;·&nbsp; <span class="loc" data-cv-field="location"></span></div>
+              <ul data-cv-each="bullets"><li></li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="sec">
+          <h2>Education</h2>
+          <div data-cv-list="education">
+            <div class="exp">
+              <div class="r1"><span data-cv-field="degree"></span><span class="dates"><span data-cv-field="start"></span> – <span data-cv-field="end"></span></span></div>
+              <div class="r2"><span class="company" data-cv-field="school"></span> &nbsp;·&nbsp; <span class="loc" data-cv-field="location"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="aside">
+        <div class="as-sec">
+          <h2>Core Skills</h2>
+          <div class="pills-wrap" data-cv-pills data-pill-class="pill"></div>
+        </div>
+        <div class="as-sec">
+          <h2>Achievements</h2>
+          <div data-cv-list="achievements">
+            <div class="ach">
+              <h3 data-cv-field="title"></h3>
+              <p data-cv-field="description"></p>
+            </div>
+          </div>
+        </div>
+        <div class="as-sec">
+          <h2>Certifications</h2>
+          <div data-cv-list="certifications">
+            <div class="ach">
+              <h3 data-cv-field="title"></h3>
+              <p data-cv-field="description"></p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script src="../engine/binder.js"></script>
+  <script>bindResume();</script>
+</body>
+</html>
